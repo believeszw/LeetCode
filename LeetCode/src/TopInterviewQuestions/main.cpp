@@ -1,7 +1,9 @@
 #include <iostream>
+#include <time.h>
 #include "Array/Title1.h"
 #include "Array/Title2.h"
-#include <time.h>
+#include "Array/Title3.h"
+
 
 // 关闭 IO 同步
 static const auto io_sync_off = []()
@@ -52,10 +54,10 @@ int main() {
 #endif
 
 // 题号 2 测试用例
-#if 1
+#if 0
 
     Title2 t2;
-    vector<int> vector2 = {7,6,4,3,1};
+    vector<int> vector2 = {7,1,5,3,6,4};
 
     clock_gettime(CLOCK_MONOTONIC, &startTime);
 
@@ -64,6 +66,20 @@ int main() {
     clock_gettime(CLOCK_MONOTONIC, &endTime);
 
     cout << retTitle2 << endl << "my function time cost :" << diff(startTime,endTime).tv_sec << ":" << diff(startTime,endTime).tv_nsec << "ns" << endl;
+#endif
+
+    // 题号 3 测试用例
+#if 1
+
+    Title3 t3;
+    vector<int> vector3 = {1,2,3,4,5,6,7};
+
+    clock_gettime(CLOCK_MONOTONIC, &startTime);
+
+    t3.rotate(vector3,3);
+    clock_gettime(CLOCK_MONOTONIC, &endTime);
+
+    cout << endl << "my function time cost :" << diff(startTime,endTime).tv_sec << ":" << diff(startTime,endTime).tv_nsec << "ns" << endl;
 #endif
 
     return 0;

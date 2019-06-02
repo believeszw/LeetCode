@@ -8,10 +8,6 @@
 #include <iostream>
 #include <vector>
 
-
-using namespace std;
-
-
 // 题号 2 : Best Time to Buy and Sell Stock II
 //
 // Say you have an array for which the ith element is the price of a given stock on day i.
@@ -47,8 +43,8 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 class Title2 {
 
 public:
-public:
-    int maxProfit(vector<int>& prices) {
+
+    int maxProfit(std::vector<int>& prices) {
 
         // 判断是否为空
         int n = prices.size();
@@ -71,6 +67,23 @@ public:
         }
 
         profit = profit + right - left;
+
+        return profit;
+    }
+
+    // 更优解
+    int maxProfitBest(std::vector<int>&  prices){
+        // 判断是否为空
+        int n = prices.size();
+        if (n == 0) return 0;
+        int  profit = 0;
+
+        // 计算所有增量
+        for (int i = 0; i < n - 1; ++i){
+            if (prices[i] < prices[i+1]){
+                profit += prices[i+1] - prices[i];
+            }
+        }
 
         return profit;
     }

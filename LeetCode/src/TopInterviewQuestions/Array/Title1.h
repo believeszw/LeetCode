@@ -8,9 +8,6 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
-
 // 题号 1 : Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
 //
 // Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
@@ -54,7 +51,7 @@ for (int i = 0; i < len; i++) {
 class Title1 {
 
 public:
-    int removeDuplicates(vector<int>& nums) {
+    int removeDuplicates(std::vector<int>& nums) {
 
         int n = nums.size();
         if (n == 0) {

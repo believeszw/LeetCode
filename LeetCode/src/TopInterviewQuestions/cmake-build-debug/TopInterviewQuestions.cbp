@@ -83,6 +83,9 @@
 		<Unit filename="D:/ProjectWJ/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions/Array/Title1.h">
 			<Option target="TopInterviewQuestions"/>
 		</Unit>
+		<Unit filename="D:/ProjectWJ/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions/Array/Title3.h">
+			<Option target="TopInterviewQuestions"/>
+		</Unit>
 		<Unit filename="D:/ProjectWJ/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions/main.cpp">
 			<Option target="TopInterviewQuestions"/>
 		</Unit>
