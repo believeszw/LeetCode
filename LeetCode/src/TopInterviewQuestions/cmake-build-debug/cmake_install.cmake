@@ -1,4 +1,4 @@
-# Install script for directory: D:/ProjectWJ/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions
+# Install script for directory: C:/Users/PC-Saw/Documents/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/ProjectWJ/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/PC-Saw/Documents/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
