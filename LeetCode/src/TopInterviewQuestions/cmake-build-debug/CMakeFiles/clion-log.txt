@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2018.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\PC-Saw\Documents\GitHub\LeetCode\LeetCode\src\TopInterviewQuestions
+"C:\Program Files\JetBrains\CLion 2018.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\PC-Saw\Documents\GitHub\LeetCode\LeetCode\LeetCode\src\TopInterviewQuestions
 -- The C compiler identification is GNU 8.1.0
 -- The CXX compiler identification is GNU 8.1.0
 -- Check for working C compiler: C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gcc.exe
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/PC-Saw/Documents/GitHub/LeetCode/LeetCode/src/TopInterviewQuestions/cmake-build-debug
+-- Build files have been written to: C:/Users/PC-Saw/Documents/GitHub/LeetCode/LeetCode/LeetCode/src/TopInterviewQuestions/cmake-build-debug
