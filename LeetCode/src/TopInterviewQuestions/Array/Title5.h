@@ -1,5 +1,5 @@
 //
-// Created by PC-Saw on 2019/06/16.
+// Created by PC-Saw on 2019/06/17.
 //
 
 #ifndef TOP_INTERVIEW_QUESTIONS_TITLE5_H
@@ -9,7 +9,9 @@
 #include <vector>
 #include <algorithm>
 
-// 题号 5 : Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+// 题号 5 : Single Number
+//
+// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
 //
 //Note:
 //
@@ -31,6 +33,8 @@ Output: 4
 class Title5 {
 
 public:
+
+    // 先从小到大排序，去掉尾巴进行比较，单个的总是出现在两个数字中的前一个
     int singleNumber(std::vector<int>& nums) {
         unsigned long long int size = nums.size();
         if (size == 1) return nums[0];
@@ -40,6 +44,15 @@ public:
             return nums[size - 1];
     }
 
+    // 利用异或最终结果就是单独的元素
+    int singleNumber2(std::vector<int>& nums) {
+        int tmp = 0;
+
+        for(int i = 0; i < nums.size(); ++i){
+            tmp = tmp ^ nums[i];
+        }
+        return tmp;
+    }
 };
 
 

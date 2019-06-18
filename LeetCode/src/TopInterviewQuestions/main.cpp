@@ -4,6 +4,8 @@
 #include "Array/Title2.h"
 #include "Array/Title3.h"
 #include "Array/Title4.h"
+#include "Array/Title5.h"
+#include "Array/Title6.h"
 
 // 关闭 IO 同步
 static const auto io_sync_off = []()
@@ -33,6 +35,7 @@ timespec diff(timespec start, timespec end)
 int main() {
 
     struct timespec startTime,endTime;
+
 // 题号 1 测试用例
 #if 0
     vector<int> ret = {0,0,1,1,1,2,2,3,3,4};
@@ -50,12 +53,10 @@ int main() {
     }
 
     cout << endl << "my function time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
-
 #endif
 
 // 题号 2 测试用例
 #if 0
-
     Title2 t2;
     vector<int> vector2 = {7,1,5,3,6,4};
 
@@ -70,7 +71,6 @@ int main() {
 
     // 题号 3 测试用例
 #if 0
-
     Title3 t3;
     vector<int> vector3 = {1,2,3,4,5,6,7};
 
@@ -83,7 +83,7 @@ int main() {
 #endif
 
     // 题号 4 测试用例
-#if 1
+#if 0
 
     Title4 t4;
     vector<int> vector4 = {1,1,3,4,5,6,7};
@@ -101,7 +101,49 @@ int main() {
     clock_gettime(CLOCK_MONOTONIC, &endTime);
 
     cout << endl << "function2 time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
+#endif
 
+    // 题号 5 测试用例
+#if 0
+
+    Title5 t5;
+    vector<int> vector5 = {1,2,3,1,3,4,2};
+
+    clock_gettime(CLOCK_MONOTONIC, &startTime);
+
+    t5.singleNumber(vector5);
+    clock_gettime(CLOCK_MONOTONIC, &endTime);
+
+    cout << endl << "function time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
+
+    clock_gettime(CLOCK_MONOTONIC, &startTime);
+
+    t5.singleNumber2(vector5);
+    clock_gettime(CLOCK_MONOTONIC, &endTime);
+
+    cout << endl << "function2 time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
+#endif
+
+    // 题号 6 测试用例
+#if 1
+
+    Title6 t6;
+    vector<int> vector6_1 = {1,2,3,1,3,4,2};
+    vector<int> vector6_2 = {2,6,1,4};
+
+    clock_gettime(CLOCK_MONOTONIC, &startTime);
+
+    t6.intersect(vector6_1, vector6_2);
+    clock_gettime(CLOCK_MONOTONIC, &endTime);
+
+    cout << endl << "function time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
+
+    clock_gettime(CLOCK_MONOTONIC, &startTime);
+
+    t6.intersect(vector6_1, vector6_2);
+    clock_gettime(CLOCK_MONOTONIC, &endTime);
+
+    cout << endl << "function2 time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
 #endif
 
     return 0;
