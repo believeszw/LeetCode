@@ -125,7 +125,7 @@ int main() {
 #endif
 
     // 题号 6 测试用例
-#if 1
+#if 0
 
     Title6 t6;
     vector<int> vector6_1 = {1,2,3,1,3,4,2};
@@ -133,18 +133,65 @@ int main() {
 
     clock_gettime(CLOCK_MONOTONIC, &startTime);
 
-    t6.intersect(vector6_1, vector6_2);
+    vector<int> ret = t6.intersect(vector6_1, vector6_2);
+    for (int i = 0; i < ret.size(); ++i) {
+        if (i != 0)
+            cout << ",";
+        cout << ret[i];
+    }
+
     clock_gettime(CLOCK_MONOTONIC, &endTime);
 
     cout << endl << "function time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
 
     clock_gettime(CLOCK_MONOTONIC, &startTime);
 
-    t6.intersect(vector6_1, vector6_2);
+    ret = t6.intersect2(vector6_1, vector6_2);
+    for (int i = 0; i < ret.size(); ++i) {
+        if (i != 0)
+            cout << ",";
+        cout << ret[i];
+    }
+
     clock_gettime(CLOCK_MONOTONIC, &endTime);
 
     cout << endl << "function2 time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
 #endif
+
+    // 题号 7 测试用例
+#if 1
+
+    Title6 t6;
+    vector<int> vector6_1 = {1,1,5,3};
+    vector<int> vector6_2 = {1,2,3};
+
+    clock_gettime(CLOCK_MONOTONIC, &startTime);
+
+    vector<int> ret = t6.intersect(vector6_1, vector6_2);
+    for (int i = 0; i < ret.size(); ++i) {
+        if (i != 0)
+            cout << ",";
+        cout << ret[i];
+    }
+
+    clock_gettime(CLOCK_MONOTONIC, &endTime);
+
+    cout << endl << "function time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
+
+    clock_gettime(CLOCK_MONOTONIC, &startTime);
+
+    ret = t6.intersect2(vector6_1, vector6_2);
+    for (int i = 0; i < ret.size(); ++i) {
+        if (i != 0)
+            cout << ",";
+        cout << ret[i];
+    }
+
+    clock_gettime(CLOCK_MONOTONIC, &endTime);
+
+    cout << endl << "function2 time cost :" << diff(startTime,endTime).tv_sec << "s " << diff(startTime,endTime).tv_nsec << "ns" << endl;
+#endif
+
 
     return 0;
 }

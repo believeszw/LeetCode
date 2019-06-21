@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 
 // 题号 6 : Intersection of Two Arrays II
 //
@@ -44,9 +45,56 @@ public:
 
     std::vector<int> intersect(std::vector<int>& nums1, std::vector<int>& nums2) {
 
+        unsigned long long int size1 = nums1.size();
+        unsigned long long int size2 = nums2.size();
+
+        // 定义新数组
+        std::vector<int> ret;
+
+        if (size1 <= 0 || size2 <= 0){
+            return ret;
+        }
+//        unsigned long long int size = size1 < size2 ? size1 : size2;
+
+        // 先将两数组排序
+        std::sort(nums1.begin(), nums1.end());
+        std::sort(nums2.begin(), nums2.end());
+
+        // 将重复元素放入返回的容器中
+        for (int i = 0; i < size1;) {
+            for (int j = 0; j < size2;) {
+                if (nums1[i] < nums2[j]) {
+                    i++;
+                } else if (nums1[i] == nums2[j]){
+                    ret.push_back(nums1[i]);
+                    i++;
+                    j++;
+                } else {
+                    j++;
+                }
+
+                // 如果有下标超出返回容器
+                if (i == size1 || j == size2)
+                    return ret;
+            }
+        }
+        return ret;
     }
 
+    std::vector<int> intersect2(std::vector<int>& nums1, std::vector<int>& nums2) {
+        std::unordered_map<int, int> hashMap;
+        std::vector<int> result;
+        for (int num1 : nums1) {
+            hashMap[num1]++;
+        }
+        for (int num2 : nums2) {
+            if (hashMap[num2] > 0) {
+                result.push_back(num2);
+                hashMap[num2]--;
+            }
+        }
+        return result;
+    }
 };
-
 
 #endif // TOP_INTERVIEW_QUESTIONS_TITLE6_H
