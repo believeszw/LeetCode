@@ -6,6 +6,7 @@
 #include "Array/Title4.h"
 #include "Array/Title5.h"
 #include "Array/Title6.h"
+#include "Array/Title7.h"
 
 // 关闭 IO 同步
 static const auto io_sync_off = []()
@@ -84,7 +85,6 @@ int main() {
 
     // 题号 4 测试用例
 #if 0
-
     Title4 t4;
     vector<int> vector4 = {1,1,3,4,5,6,7};
 
@@ -105,7 +105,6 @@ int main() {
 
     // 题号 5 测试用例
 #if 0
-
     Title5 t5;
     vector<int> vector5 = {1,2,3,1,3,4,2};
 
@@ -126,7 +125,6 @@ int main() {
 
     // 题号 6 测试用例
 #if 0
-
     Title6 t6;
     vector<int> vector6_1 = {1,2,3,1,3,4,2};
     vector<int> vector6_2 = {2,6,1,4};
@@ -160,14 +158,13 @@ int main() {
 
     // 题号 7 测试用例
 #if 1
-
-    Title6 t6;
-    vector<int> vector6_1 = {1,1,5,3};
-    vector<int> vector6_2 = {1,2,3};
+    Title7 t7;
+    vector<int> vector7_1 = {9,9,9,8};
+    vector<int> vector7_2 = {9,9,9,8};
 
     clock_gettime(CLOCK_MONOTONIC, &startTime);
 
-    vector<int> ret = t6.intersect(vector6_1, vector6_2);
+    vector<int> ret = t7.plusOne(vector7_1);
     for (int i = 0; i < ret.size(); ++i) {
         if (i != 0)
             cout << ",";
@@ -180,7 +177,7 @@ int main() {
 
     clock_gettime(CLOCK_MONOTONIC, &startTime);
 
-    ret = t6.intersect2(vector6_1, vector6_2);
+    ret = t7.plusOne2(vector7_2);
     for (int i = 0; i < ret.size(); ++i) {
         if (i != 0)
             cout << ",";
