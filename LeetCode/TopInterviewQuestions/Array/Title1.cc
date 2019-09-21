@@ -53,8 +53,7 @@ for (int i = 0; i < len; i++) {
 
  * */
 
-static const auto io_sync_off = []()
-{
+static const auto io_sync_off = []() {
   // turn off sync
   std::ios::sync_with_stdio(false);
   // untie in/out streams
@@ -62,45 +61,43 @@ static const auto io_sync_off = []()
   return nullptr;
 }();
 
-
 class Title1 {
 
-public:
-    int removeDuplicates(std::vector<int>& nums) {
+ public:
+  int removeDuplicates(std::vector<int> &nums) {
 
-        int n = nums.size();
-        if (n <= 1) {
-            return n;
-        }
-
-        int count = 1;
-        for (int i = 1; i < n; ++i) {
-            if (nums[i-1] != nums[i]) {
-                nums[count++] = nums[i];
-            }
-        }
-        return count;
+    int n = nums.size();
+    if (n <= 1) {
+      return n;
     }
+
+    int count = 1;
+    for (int i = 1; i < n; ++i) {
+      if (nums[i - 1] != nums[i]) {
+        nums[count++] = nums[i];
+      }
+    }
+    return count;
+  }
 };
 
 TEST(Title, test1) {
 
   struct timeval start{}, end{};
-  gettimeofday( &start, nullptr );
+  gettimeofday(&start, nullptr);
 
-  std::vector<int> ret = {0,0,1,1,1,2,2,3,3,4};
+  std::vector<int> ret = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
   Title1 t1;
   int retTitle1 = t1.removeDuplicates(ret);
 
-  gettimeofday( &end, nullptr );
+  gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
-
 
   std::cout << "[";
   for (int i = 0; i < retTitle1; ++i) {
-      std::cout << ret.at(i);
-      if (i != retTitle1 - 1) std::cout << ", ";
+    std::cout << ret.at(i);
+    if (i != retTitle1 - 1) std::cout << ", ";
   }
   std::cout << "]";
 

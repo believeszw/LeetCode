@@ -4,7 +4,7 @@
 #include <profileapi.h>
 #include "Array/Title1.cc"
 #include "Array/Title2.cc"
-#include "Array/Title3.h"
+#include "Array/Title3.cc"
 #include "Array/Title4.h"
 #include "Array/Title5.h"
 #include "Array/Title6.h"

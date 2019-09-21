@@ -44,8 +44,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
  * */
 
-static const auto io_sync_off = []()
-{
+static const auto io_sync_off = []() {
   // turn off sync
   std::ios::sync_with_stdio(false);
   // untie in/out streams
@@ -55,76 +54,75 @@ static const auto io_sync_off = []()
 
 class Title2 {
 
-public:
+ public:
 
-    int maxProfit(std::vector<int>& prices) {
+  int maxProfit(std::vector<int> &prices) {
 
-        // 判断是否为空
-        int n = prices.size();
-        if (n == 0) return 0;
+    // 判断是否为空
+    int n = prices.size();
+    if (n == 0) return 0;
 
-        // 初始化买卖价格
-        int left   = prices[0];
-        int right  = prices[0];
-        int profit = 0;
+    // 初始化买卖价格
+    int left = prices[0];
+    int right = prices[0];
+    int profit = 0;
 
-        for (int i = 1; i < n; ++i) {
-            // 持续增长
-            if (prices[i] >= right) {
-                right = prices[i];
-            }
-            else { // 出现下降
-                profit = profit + right - left;
-                left   = right = prices[i];
-            }
-        }
-
+    for (int i = 1; i < n; ++i) {
+      // 持续增长
+      if (prices[i] >= right) {
+        right = prices[i];
+      } else { // 出现下降
         profit = profit + right - left;
-
-        return profit;
+        left = right = prices[i];
+      }
     }
 
-    // 更优解
-    int maxProfitBest(std::vector<int>&  prices){
-        // 判断是否为空
-        int n = prices.size();
-        if (n == 0) return 0;
-        int  profit = 0;
+    profit = profit + right - left;
 
-        // 计算所有增量
-        for (int i = 0; i < n - 1; ++i){
-            if (prices[i] < prices[i+1]){
-                profit += prices[i+1] - prices[i];
-            }
-        }
+    return profit;
+  }
 
-        return profit;
+  // 更优解
+  int maxProfitBest(std::vector<int> &prices) {
+    // 判断是否为空
+    int n = prices.size();
+    if (n == 0) return 0;
+    int profit = 0;
+
+    // 计算所有增量
+    for (int i = 0; i < n - 1; ++i) {
+      if (prices[i] < prices[i + 1]) {
+        profit += prices[i + 1] - prices[i];
+      }
     }
+
+    return profit;
+  }
 };
 
 TEST(Title, test2) {
 
   Title2 t2;
-  std::vector<int> vector2 = {7,1,5,3,6,4};
+  std::vector<int> vector2 = {7, 1, 5, 3, 6, 4};
 
   struct timeval start{}, end{};
-  gettimeofday( &start, nullptr );
+  gettimeofday(&start, nullptr);
 
   for (int kI = 0; kI < 100000; ++kI) {
     int retTitle2 = t2.maxProfit(vector2);
   }
 
-  gettimeofday( &end, nullptr );
+  gettimeofday(&end, nullptr);
   std::cout << "maxProfit cost time : " << diff(start, end) << " us." << std::endl;
 
   // maxProfitBest
-  gettimeofday( &start, nullptr );
+  gettimeofday(&start, nullptr);
 
   for (int kJ = 0; kJ < 100000; ++kJ) {
     int retTitle2_best = t2.maxProfitBest(vector2);
   }
 
-  gettimeofday( &end, nullptr );
+  gettimeofday(&end, nullptr);
   std::cout << "maxProfitBest cost time : " << diff(start, end) << " us." << std::endl;
 
 }
