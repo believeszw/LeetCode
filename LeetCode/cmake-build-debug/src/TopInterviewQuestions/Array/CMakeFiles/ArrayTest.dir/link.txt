@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/ArrayTest.dir/Title1.cc.o  -o ../../../../src/TopInterviewQuestions/bin/ArrayTest  -L/home/believe/git/hub/LeetCode/LeetCode/src/TopInterviewQuestions/Array/../../gtest -Wl,-rpath,/home/believe/git/hub/LeetCode/LeetCode/src/TopInterviewQuestions/Array/../../gtest: -lgtest -lgtest_main -lpthread 

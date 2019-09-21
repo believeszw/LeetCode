@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/TopInterviewQuestions.dir/main.cpp.o  -o ../../../src/bin/TopInterviewQuestions 
