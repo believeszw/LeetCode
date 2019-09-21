@@ -9,6 +9,8 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
+#include "Util.h"
+
 
 // 题号 6 : Intersection of Two Arrays II
 //
@@ -39,11 +41,19 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 
  * */
 
+static const auto io_sync_off = []() {
+  // turn off sync
+  std::ios::sync_with_stdio(false);
+  // untie in/out streams
+  std::cin.tie(nullptr);
+  return nullptr;
+}();
+
 class Title6 {
 
 public:
 
-    std::vector<int> intersect(std::vector<int>& nums1, std::vector<int>& nums2) {
+    std::vector<int> IntersectBetter(std::vector<int>& nums1, std::vector<int>& nums2) {
 
         unsigned long long int size1 = nums1.size();
         unsigned long long int size2 = nums2.size();
@@ -66,8 +76,7 @@ public:
                 if (nums1[i] < nums2[j]) {
                     i++;
                 } else if (nums1[i] == nums2[j]){
-                    ret.push_back(nums1[i]);
-                    i++;
+                    ret.push_back(nums1[i++]);
                     j++;
                 } else {
                     j++;
@@ -81,7 +90,7 @@ public:
         return ret;
     }
 
-    std::vector<int> intersect2(std::vector<int>& nums1, std::vector<int>& nums2) {
+    std::vector<int> Intersect(std::vector<int>& nums1, std::vector<int>& nums2) {
         std::unordered_map<int, int> hashMap;
         std::vector<int> result;
         for (int num1 : nums1) {
@@ -96,5 +105,37 @@ public:
         return result;
     }
 };
+
+TEST(Title,test6) {
+  Title6 t6;
+  std::vector<int> vector6_1 = {1,2,3,1,3,4,2};
+  std::vector<int> vector6_2 = {2,6,1,4};
+  std::vector<int> ret;
+  struct timeval start{}, end{};
+
+  gettimeofday(&start, nullptr);
+  for (int kI = 0; kI < 1000; ++kI) {
+    ret = t6.IntersectBetter(vector6_1, vector6_2);
+  }
+  gettimeofday(&end, nullptr);
+  std::cout << "IntersectBetter cost time : " << diff(start, end) << " us." << std::endl;
+
+
+  // SingleNumberBetter
+  gettimeofday(&start, nullptr);
+  for (int kJ = 0; kJ < 1000; ++kJ) {
+    ret = t6.Intersect(vector6_1, vector6_2);
+  }
+  gettimeofday(&end, nullptr);
+  std::cout << "Intersect cost time : " << diff(start, end) << " us." << std::endl;
+
+
+//  for (int i = 0; i < ret.size(); ++i) {
+//    if (i != 0)
+//      std::cout << ",";
+//    std::cout << ret[i];
+//  }
+
+}
 
 #endif // TOP_INTERVIEW_QUESTIONS_TITLE6_H

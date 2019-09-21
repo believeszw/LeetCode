@@ -7,7 +7,7 @@
 #include "Array/Title3.cc"
 #include "Array/Title4.cc"
 #include "Array/Title5.cc"
-#include "Array/Title6.h"
+#include "Array/Title6.cc"
 #include "Array/Title7.h"
 #include "Array/Title8.h"
 #include "Array/Title9.h"
@@ -30,30 +30,8 @@ int main() {
     LARGE_INTEGER timeStart,timeEnd,tc;
 
 
-    // 题号 5 测试用例
-#if 0
-
-
-
-
-
-    QueryPerformanceCounter(&timeEnd);
-    cout << endl << "function time cost :" << (timeEnd.QuadPart - timeStart.QuadPart)*1.0/tc.QuadPart << "s " << endl;
-
-    QueryPerformanceFrequency(&tc);
-    QueryPerformanceCounter(&timeStart);
-
-
-
-    QueryPerformanceCounter(&timeEnd);
-    cout << endl << "function time cost :" << (timeEnd.QuadPart - timeStart.QuadPart)*1.0/tc.QuadPart << "s " << endl;
-#endif
-
     // 题号 6 测试用例
 #if 0
-    Title6 t6;
-    vector<int> vector6_1 = {1,2,3,1,3,4,2};
-    vector<int> vector6_2 = {2,6,1,4};
 
     QueryPerformanceFrequency(&tc);
     QueryPerformanceCounter(&timeStart);
