@@ -64,7 +64,9 @@ static const auto io_sync_off = []() {
 class Title1 {
 
  public:
-  int removeDuplicates(std::vector<int> &nums) {
+
+  // 两个游标向后移动，一个遍历，一个将不重复元素向前移动
+  int RemoveDuplicates(std::vector<int> &nums) {
 
     int n = nums.size();
     if (n <= 1) {
@@ -89,7 +91,7 @@ TEST(Title, test1) {
   std::vector<int> ret = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
   Title1 t1;
-  int retTitle1 = t1.removeDuplicates(ret);
+  int retTitle1 = t1.RemoveDuplicates(ret);
 
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;

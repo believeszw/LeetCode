@@ -49,13 +49,13 @@ static const auto io_sync_off = []() {
 
 class Title3 {
  public:
-  // 还有一个思路，三次翻转，第一次全部翻转，还有2次以k为分界线进行翻转
-  void rotate(std::vector<int> &nums, int k) {
+
+  // 较优解
+  void RotateBetter(std::vector<int> &nums, int k) {
 
     int n = nums.size();
 
-    if (n == 0) return;
-    if (k == 0) return;
+    if (n == 0 || k == 0) return;
     if (k >= n) k = k % n;
 
     int cur = 0;
@@ -78,12 +78,13 @@ class Title3 {
     }
   }
 
-  void rotate2(std::vector<int> &nums, int k) {
+  // 还有一个思路，三次翻转，前2次以k为分界线进行翻转，最后全部翻转
+  void Rotate(std::vector<int> &nums, int k) {
     int i, j;
     int len = nums.size();
     k = k % len;
-    reverse(nums.begin(), nums.end()-k);
-    reverse(nums.end()-k, nums.end());
+    reverse(nums.begin(), nums.end() - k);
+    reverse(nums.end() - k, nums.end());
     reverse(nums.begin(), nums.end());
   }
 
@@ -93,25 +94,22 @@ TEST(Title, test3) {
 
   Title3 t3;
   std::vector<int> vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
-
   struct timeval start{}, end{};
-  gettimeofday(&start, nullptr);
-
-  for (int kJ = 0; kJ < 10000; ++kJ) {
-    t3.rotate(vector3, 3);
-  }
-
-  gettimeofday(&end, nullptr);
-  std::cout << "rotate cost time : " << diff(start, end) << " us." << std::endl;
 
   gettimeofday(&start, nullptr);
-
   for (int kJ = 0; kJ < 10000; ++kJ) {
-    t3.rotate2(vector3, 3);
+    t3.Rotate(vector3, 3);
   }
-
   gettimeofday(&end, nullptr);
-  std::cout << "rotate2 cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "Rotate cost time : " << diff(start, end) << " us." << std::endl;
+
+
+  gettimeofday(&start, nullptr);
+  for (int kJ = 0; kJ < 10000; ++kJ) {
+    t3.RotateBetter(vector3, 3);
+  }
+  gettimeofday(&end, nullptr);
+  std::cout << "RotateBetter cost time : " << diff(start, end) << " us." << std::endl;
 
   // 为了测试性能这里就不打印了，已经乱序了
 //  std::cout << "[";
