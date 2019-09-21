@@ -1,8 +1,4 @@
 /*
 !.gitignore
-!CmakeLists.txt
-!src
-!test
-!gtest
-!include
+!LeetCode
 !readme.md
