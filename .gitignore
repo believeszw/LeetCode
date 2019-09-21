@@ -1,51 +1,8 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-*.xml
-LeetCode/src/TopInterviewQuestions/.idea/TopInterviewQuestions.iml
-*.cmake
-*.bin
-*.rsp
-*.make
-LeetCode/src/TopInterviewQuestions/cmake-build-debug/Makefile
-*.internal
-*.txt
-*.c
-*.log
-*.cxx
-*.check_cache
-*.marks
-LeetCode/src/TopInterviewQuestions/cmake-build-debug/CMakeFiles/Makefile2
-*.includecache
-*.cpp
-LeetCode/src/TopInterviewQuestions/cmake-build-debug/TopInterviewQuestions.cbp
-.idea/LeetCode.iml
+/*
+!.gitignore
+!CmakeLists.txt
+!src
+!test
+!gtest
+!include
+!readme.md
