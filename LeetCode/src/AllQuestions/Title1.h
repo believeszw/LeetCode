@@ -6,9 +6,10 @@
 #define UNTITLED_TITLE1_H
 
 #include <iostream>
-#include <windows.h>
 #include <vector>
 #include <unordered_map>
+#include "gtest/gtest.h"
+#include "Util.h"
 
 
 using namespace std;
@@ -56,5 +57,9 @@ public:
     }
 };
 
+
+TEST(Title1, test) {
+
+}
 
 #endif //UNTITLED_TITLE1_H

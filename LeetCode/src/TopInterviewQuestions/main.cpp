@@ -2,7 +2,7 @@
 #include <time.h>
 #include <sysinfoapi.h>
 #include <profileapi.h>
-#include "Array/Title1.h"
+#include "Array/Title1.cc"
 #include "Array/Title2.h"
 #include "Array/Title3.h"
 #include "Array/Title4.h"
@@ -24,42 +24,11 @@
 
 using namespace std;
 
-//timespec diff(timespec start, timespec end)
-//{
-//    timespec temp;
-//    if ((end.tv_nsec-start.tv_nsec)<0) {
-//        temp.tv_sec = end.tv_sec-start.tv_sec-1;
-//        temp.tv_nsec = 1000000000+end.tv_nsec-start.tv_nsec;
-//    } else {
-//        temp.tv_sec = end.tv_sec-start.tv_sec;
-//        temp.tv_nsec = end.tv_nsec-start.tv_nsec;
-//    }
-//    return temp;
-//}
 
 int main() {
 
     LARGE_INTEGER timeStart,timeEnd,tc;
 
-// 题号 1 测试用例
-#if 0
-    vector<int> ret = {0,0,1,1,1,2,2,3,3,4};
-
-    Title1 t1;
-    QueryPerformanceFrequency(&tc);
-    QueryPerformanceCounter(&timeStart);
-
-    int retTitle1 = t1.removeDuplicates(ret);
-
-    QueryPerformanceCounter(&timeEnd);
-
-    cout << endl << "function time cost :" << (timeEnd.QuadPart - timeStart.QuadPart)*1.0/tc.QuadPart << "s " << endl;
-
-    for (int i = 0; i < retTitle1; ++i) {
-        cout << ret.at(i);
-        if (i != retTitle1 - 1) cout << " ,";
-    }
-#endif
 
 // 题号 2 测试用例
 #if 0
