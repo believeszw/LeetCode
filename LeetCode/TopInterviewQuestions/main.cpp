@@ -3,7 +3,7 @@
 #include <sysinfoapi.h>
 #include <profileapi.h>
 #include "Array/Title1.cc"
-#include "Array/Title2.h"
+#include "Array/Title2.cc"
 #include "Array/Title3.h"
 #include "Array/Title4.h"
 #include "Array/Title5.h"
@@ -30,19 +30,7 @@ int main() {
     LARGE_INTEGER timeStart,timeEnd,tc;
 
 
-// 题号 2 测试用例
-#if 0
-    Title2 t2;
-    vector<int> vector2 = {7,1,5,3,6,4};
 
-    QueryPerformanceFrequency(&tc);
-    QueryPerformanceCounter(&timeStart);
-
-    int retTitle2 = t2.maxProfit(vector2);
-
-    QueryPerformanceCounter(&timeEnd);
-    cout << endl << "function time cost :" << (timeEnd.QuadPart - timeStart.QuadPart)*1.0/tc.QuadPart << "s " << endl;
-#endif
 
     // 题号 3 测试用例
 #if 0

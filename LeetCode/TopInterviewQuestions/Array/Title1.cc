@@ -8,8 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "Util.h"
-#include "gtest/gtest.h"
-#include <sys/time.h>
+
 
 // 题号 1 : Remove Duplicates from Sorted Array
 //
@@ -63,6 +62,7 @@ static const auto io_sync_off = []()
   return nullptr;
 }();
 
+
 class Title1 {
 
 public:
@@ -83,7 +83,7 @@ public:
     }
 };
 
-TEST(Title, test) {
+TEST(Title, test1) {
 
   struct timeval start{}, end{};
   gettimeofday( &start, nullptr );
@@ -103,6 +103,7 @@ TEST(Title, test) {
       if (i != retTitle1 - 1) std::cout << ", ";
   }
   std::cout << "]";
+
 }
 
 #endif // TOP_INTERVIEW_QUESTIONS_TITLE1_H

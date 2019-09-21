@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <vector>
+#include "Util.h"
+
 
 // 题号 2 : Best Time to Buy and Sell Stock II
 //
@@ -41,6 +43,15 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
  * */
+
+static const auto io_sync_off = []()
+{
+  // turn off sync
+  std::ios::sync_with_stdio(false);
+  // untie in/out streams
+  std::cin.tie(nullptr);
+  return nullptr;
+}();
 
 class Title2 {
 
@@ -91,5 +102,31 @@ public:
     }
 };
 
+TEST(Title, test2) {
+
+  Title2 t2;
+  std::vector<int> vector2 = {7,1,5,3,6,4};
+
+  struct timeval start{}, end{};
+  gettimeofday( &start, nullptr );
+
+  for (int kI = 0; kI < 100000; ++kI) {
+    int retTitle2 = t2.maxProfit(vector2);
+  }
+
+  gettimeofday( &end, nullptr );
+  std::cout << "maxProfit cost time : " << diff(start, end) << " us." << std::endl;
+
+  // maxProfitBest
+  gettimeofday( &start, nullptr );
+
+  for (int kJ = 0; kJ < 100000; ++kJ) {
+    int retTitle2_best = t2.maxProfitBest(vector2);
+  }
+
+  gettimeofday( &end, nullptr );
+  std::cout << "maxProfitBest cost time : " << diff(start, end) << " us." << std::endl;
+
+}
 
 #endif // TOP_INTERVIEW_QUESTIONS_TITLE2_H
