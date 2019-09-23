@@ -36,14 +36,6 @@ Output: true
 
  * */
 
-static const auto io_sync_off = []() {
-  // turn off sync
-  std::ios::sync_with_stdio(false);
-  // untie in/out streams
-  std::cin.tie(nullptr);
-  return nullptr;
-}();
-
 class Title4 {
 
  public:
@@ -65,24 +57,27 @@ class Title4 {
 TEST(Title, test4) {
   Title4 t4;
   std::vector<int> vector4 = {1, 1, 3, 4, 5, 6, 7};
+  bool ret = false;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    t4.ContainsDuplicate(vector4);
+    ret = t4.ContainsDuplicate(vector4);
   }
   gettimeofday(&end, nullptr);
-  std::cout << "ContainsDuplicate cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "ContainsDuplicate       cost time : " << diff(start, end) << " us." << std::endl;
+  EXPECT_TRUE(ret);
 
-
+  ret = false;
   vector4 = {1, 1, 3, 4, 5, 6, 7};
   // ContainsDuplicateBetter
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    t4.ContainsDuplicateBetter(vector4);
+    ret = t4.ContainsDuplicateBetter(vector4);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ContainsDuplicateBetter cost time : " << diff(start, end) << " us." << std::endl;
+  EXPECT_TRUE(ret);
 }
 
 #endif // TOP_INTERVIEW_QUESTIONS_TITLE4_H

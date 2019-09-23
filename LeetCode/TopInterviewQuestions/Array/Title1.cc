@@ -53,14 +53,6 @@ for (int i = 0; i < len; i++) {
 
  * */
 
-static const auto io_sync_off = []() {
-  // turn off sync
-  std::ios::sync_with_stdio(false);
-  // untie in/out streams
-  std::cin.tie(nullptr);
-  return nullptr;
-}();
-
 class Title1 {
 
  public:
@@ -86,18 +78,17 @@ class Title1 {
 TEST(Title, test1) {
 
   struct timeval start{}, end{};
-  gettimeofday(&start, nullptr);
-
+  Title1 t1;
   std::vector<int> ret = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
-  Title1 t1;
+  gettimeofday(&start, nullptr);
   int retTitle1 = t1.RemoveDuplicates(ret);
-
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 
   std::cout << "[";
   for (int i = 0; i < retTitle1; ++i) {
+    EXPECT_EQ(i, ret.at(i));
     std::cout << ret.at(i);
     if (i != retTitle1 - 1) std::cout << ", ";
   }

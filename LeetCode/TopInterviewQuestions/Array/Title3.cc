@@ -39,14 +39,6 @@ Could you do it in-place with O(1) extra space?
 
  * */
 
-static const auto io_sync_off = []() {
-  // turn off sync
-  std::ios::sync_with_stdio(false);
-  // untie in/out streams
-  std::cin.tie(nullptr);
-  return nullptr;
-}();
-
 class Title3 {
  public:
 
@@ -96,16 +88,35 @@ TEST(Title, test3) {
   std::vector<int> vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   struct timeval start{}, end{};
 
+  t3.Rotate(vector3, 3);
+  EXPECT_EQ(6, vector3[0]);
+  EXPECT_EQ(7, vector3[1]);
+  EXPECT_EQ(8, vector3[2]);
+  EXPECT_EQ(1, vector3[3]);
+  EXPECT_EQ(2, vector3[4]);
+  EXPECT_EQ(3, vector3[5]);
+
+  vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
+  t3.RotateBetter(vector3, 3);
+  EXPECT_EQ(6, vector3[0]);
+  EXPECT_EQ(7, vector3[1]);
+  EXPECT_EQ(8, vector3[2]);
+  EXPECT_EQ(1, vector3[3]);
+  EXPECT_EQ(2, vector3[4]);
+  EXPECT_EQ(3, vector3[5]);
+
+  // 性能测试
+  vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 10000; ++kJ) {
+  for (int kJ = 0; kJ < 100; ++kJ) {
     t3.Rotate(vector3, 3);
   }
   gettimeofday(&end, nullptr);
-  std::cout << "Rotate cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "Rotate       cost time : " << diff(start, end) << " us." << std::endl;
 
-
+  vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 10000; ++kJ) {
+  for (int kJ = 0; kJ < 100; ++kJ) {
     t3.RotateBetter(vector3, 3);
   }
   gettimeofday(&end, nullptr);

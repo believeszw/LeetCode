@@ -32,21 +32,13 @@ Output: 4
 
  * */
 
-static const auto io_sync_off = []() {
-  // turn off sync
-  std::ios::sync_with_stdio(false);
-  // untie in/out streams
-  std::cin.tie(nullptr);
-  return nullptr;
-}();
-
 class Title5 {
 
  public:
 
   // 先从小到大排序，去掉尾巴进行比较，单个的总是出现在两个数字中的前一个
   int SingleNumber(std::vector<int> &nums) {
-        unsigned long long int size = nums.size();
+    unsigned long long int size = nums.size();
     if (size == 1) return nums[0];
 
     std::sort(nums.begin(), nums.end());
@@ -69,23 +61,27 @@ class Title5 {
 TEST(Title, test5) {
   Title5 t5;
   std::vector<int> vector5 = {1, 2, 3, 1, 3, 4, 2};
+  int ret = -1;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 1000; ++kI) {
-    t5.SingleNumber(vector5);
+  for (int kI = 0; kI < 100; ++kI) {
+    ret = t5.SingleNumber(vector5);
   }
   gettimeofday(&end, nullptr);
-  std::cout << "SingleNumber cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "SingleNumber       cost time : " << diff(start, end) << " us." << std::endl;
+  EXPECT_EQ(4, ret);
 
 
   // SingleNumberBetter
+  ret = -1;
   gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 1000; ++kJ) {
-    t5.SingleNumberBetter(vector5);
+  for (int kJ = 0; kJ < 100; ++kJ) {
+    ret = t5.SingleNumberBetter(vector5);
   }
   gettimeofday(&end, nullptr);
   std::cout << "SingleNumberBetter cost time : " << diff(start, end) << " us." << std::endl;
+  EXPECT_EQ(4, ret);
 
 }
 

@@ -41,94 +41,90 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 
  * */
 
-static const auto io_sync_off = []() {
-  // turn off sync
-  std::ios::sync_with_stdio(false);
-  // untie in/out streams
-  std::cin.tie(nullptr);
-  return nullptr;
-}();
-
 class Title6 {
 
-public:
+ public:
 
-    std::vector<int> IntersectBetter(std::vector<int>& nums1, std::vector<int>& nums2) {
+  std::vector<int> IntersectBetter(std::vector<int> &nums1, std::vector<int> &nums2) {
 
-        unsigned long long int size1 = nums1.size();
-        unsigned long long int size2 = nums2.size();
+    unsigned long long int size1 = nums1.size();
+    unsigned long long int size2 = nums2.size();
 
-        // 定义新数组
-        std::vector<int> ret;
+    // 定义新数组
+    std::vector<int> ret;
 
-        if (size1 <= 0 || size2 <= 0){
-            return ret;
-        }
-//        unsigned long long int size = size1 < size2 ? size1 : size2;
-
-        // 先将两数组排序
-        std::sort(nums1.begin(), nums1.end());
-        std::sort(nums2.begin(), nums2.end());
-
-        // 将重复元素放入返回的容器中
-        for (int i = 0; i < size1;) {
-            for (int j = 0; j < size2;) {
-                if (nums1[i] < nums2[j]) {
-                    i++;
-                } else if (nums1[i] == nums2[j]){
-                    ret.push_back(nums1[i++]);
-                    j++;
-                } else {
-                    j++;
-                }
-
-                // 如果有下标超出返回容器
-                if (i == size1 || j == size2)
-                    return ret;
-            }
-        }
-        return ret;
+    if (size1 <= 0 || size2 <= 0) {
+      return ret;
     }
 
-    std::vector<int> Intersect(std::vector<int>& nums1, std::vector<int>& nums2) {
-        std::unordered_map<int, int> hashMap;
-        std::vector<int> result;
-        for (int num1 : nums1) {
-            hashMap[num1]++;
+    // 先将两数组排序
+    std::sort(nums1.begin(), nums1.end());
+    std::sort(nums2.begin(), nums2.end());
+
+    // 将重复元素放入返回的容器中
+    for (int i = 0; i < size1;) {
+      for (int j = 0; j < size2;) {
+        if (nums1[i] < nums2[j]) {
+          i++;
+        } else if (nums1[i] == nums2[j]) {
+          ret.push_back(nums1[i++]);
+          j++;
+        } else {
+          j++;
         }
-        for (int num2 : nums2) {
-            if (hashMap[num2] > 0) {
-                result.push_back(num2);
-                hashMap[num2]--;
-            }
-        }
-        return result;
+
+        // 如果有下标超出返回容器
+        if (i == size1 || j == size2)
+          return ret;
+      }
     }
+    return ret;
+  }
+
+  std::vector<int> Intersect(std::vector<int> &nums1, std::vector<int> &nums2) {
+    std::unordered_map<int, int> hashMap;
+    std::vector<int> result;
+    for (int num1 : nums1) {
+      hashMap[num1]++;
+    }
+    for (int num2 : nums2) {
+      if (hashMap[num2] > 0) {
+        result.push_back(num2);
+        hashMap[num2]--;
+      }
+    }
+    return result;
+  }
 };
 
-TEST(Title,test6) {
+TEST(Title, test6) {
   Title6 t6;
-  std::vector<int> vector6_1 = {1,2,3,1,3,4,2};
-  std::vector<int> vector6_2 = {2,6,1,4};
+  std::vector<int> vector6_1 = {1, 2, 3, 1, 3, 4, 2};
+  std::vector<int> vector6_2 = {2, 6, 1, 4};
   std::vector<int> ret;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 1000; ++kI) {
+  for (int kI = 0; kI < 100; ++kI) {
     ret = t6.IntersectBetter(vector6_1, vector6_2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "IntersectBetter cost time : " << diff(start, end) << " us." << std::endl;
-
+  EXPECT_EQ(1, ret[0]);
+  EXPECT_EQ(2, ret[1]);
+  EXPECT_EQ(4, ret[2]);
 
   // SingleNumberBetter
+  ret = {0};
   gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 1000; ++kJ) {
+  for (int kJ = 0; kJ < 100; ++kJ) {
     ret = t6.Intersect(vector6_1, vector6_2);
   }
   gettimeofday(&end, nullptr);
-  std::cout << "Intersect cost time : " << diff(start, end) << " us." << std::endl;
-
+  std::cout << "Intersect       cost time : " << diff(start, end) << " us." << std::endl;
+  EXPECT_EQ(1, ret[0]);
+  EXPECT_EQ(2, ret[1]);
+  EXPECT_EQ(4, ret[2]);
 
 //  for (int i = 0; i < ret.size(); ++i) {
 //    if (i != 0)

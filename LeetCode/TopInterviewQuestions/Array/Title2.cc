@@ -44,14 +44,6 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
  * */
 
-static const auto io_sync_off = []() {
-  // turn off sync
-  std::ios::sync_with_stdio(false);
-  // untie in/out streams
-  std::cin.tie(nullptr);
-  return nullptr;
-}();
-
 class Title2 {
 
  public:
@@ -105,22 +97,24 @@ TEST(Title, test2) {
   Title2 t2;
   std::vector<int> vector2 = {7, 1, 5, 3, 6, 4};
   struct timeval start{}, end{};
+  int ret = 0;
 
   gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 1000000; ++kI) {
-    int retTitle2 = t2.MaxProfit(vector2);
+  for (int kI = 0; kI < 10000; ++kI) {
+    ret = t2.MaxProfit(vector2);
   }
   gettimeofday(&end, nullptr);
-  std::cout << "MaxProfit cost time : " << diff(start, end) << " us." << std::endl;
-
+  std::cout << "MaxProfit       cost time : " << diff(start, end) << " us." << std::endl;
+  EXPECT_EQ(7, ret);
 
   // MaxProfitBetter
   gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 1000000; ++kJ) {
-    int retTitle2_best = t2.MaxProfitBetter(vector2);
+  for (int kJ = 0; kJ < 10000; ++kJ) {
+    ret = t2.MaxProfitBetter(vector2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "MaxProfitBetter cost time : " << diff(start, end) << " us." << std::endl;
+  EXPECT_EQ(7, ret);
 
 }
 
