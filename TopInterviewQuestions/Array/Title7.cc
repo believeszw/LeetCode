@@ -6,8 +6,6 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE7_H
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include "Util.h"
 
 // 题号 7 : Plus One
@@ -71,7 +69,7 @@ class Title7 {
 };
 
 TEST(Title, test7) {
-  Title7 t7;
+  Title7 title_7;
   std::vector<int> vector7_1 = {9, 9, 9, 8};
   std::vector<int> vector7_2 = {9, 9, 9, 8};
   std::vector<int> ret = {0};
@@ -79,7 +77,7 @@ TEST(Title, test7) {
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    ret = t7.PlusOne(vector7_1);
+    ret = title_7.PlusOne(vector7_1);
   }
   gettimeofday(&end, nullptr);
   std::cout << "PlusOne       cost time : " << diff(start, end) << " us." << std::endl;
@@ -89,7 +87,7 @@ TEST(Title, test7) {
   ret = {0};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = t7.PlusOneBetter(vector7_2);
+    ret = title_7.PlusOneBetter(vector7_2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "PlusOneBetter cost time : " << diff(start, end) << " us." << std::endl;

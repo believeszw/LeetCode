@@ -6,7 +6,6 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE3_H
 
 #include <iostream>
-#include <vector>
 #include "Util.h"
 
 
@@ -84,11 +83,11 @@ class Title3 {
 
 TEST(Title, test3) {
 
-  Title3 t3;
+  Title3 title_3;
   std::vector<int> vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   struct timeval start{}, end{};
 
-  t3.Rotate(vector3, 3);
+  title_3.Rotate(vector3, 3);
   EXPECT_EQ(6, vector3[0]);
   EXPECT_EQ(7, vector3[1]);
   EXPECT_EQ(8, vector3[2]);
@@ -97,7 +96,7 @@ TEST(Title, test3) {
   EXPECT_EQ(3, vector3[5]);
 
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
-  t3.RotateBetter(vector3, 3);
+  title_3.RotateBetter(vector3, 3);
   EXPECT_EQ(6, vector3[0]);
   EXPECT_EQ(7, vector3[1]);
   EXPECT_EQ(8, vector3[2]);
@@ -109,7 +108,7 @@ TEST(Title, test3) {
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    t3.Rotate(vector3, 3);
+    title_3.Rotate(vector3, 3);
   }
   gettimeofday(&end, nullptr);
   std::cout << "Rotate       cost time : " << diff(start, end) << " us." << std::endl;
@@ -117,7 +116,7 @@ TEST(Title, test3) {
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    t3.RotateBetter(vector3, 3);
+    title_3.RotateBetter(vector3, 3);
   }
   gettimeofday(&end, nullptr);
   std::cout << "RotateBetter cost time : " << diff(start, end) << " us." << std::endl;

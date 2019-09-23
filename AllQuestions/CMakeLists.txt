@@ -7,7 +7,7 @@ link_directories(${PROJECT_SOURCE_DIR}/../gtest)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin/${COMPILE_PLAT})
 
-SET(SRC main.cpp)
+SET(SRC Title1.cc)
 
 SET(TEST_LIB gtest gtest_main -lpthread)
 

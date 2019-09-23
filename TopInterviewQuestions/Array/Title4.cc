@@ -6,8 +6,6 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE4_H
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include <unordered_set>
 #include "Util.h"
 
@@ -55,14 +53,14 @@ class Title4 {
 };
 
 TEST(Title, test4) {
-  Title4 t4;
+  Title4 title_4;
   std::vector<int> vector4 = {1, 1, 3, 4, 5, 6, 7};
   bool ret = false;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    ret = t4.ContainsDuplicate(vector4);
+    ret = title_4.ContainsDuplicate(vector4);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ContainsDuplicate       cost time : " << diff(start, end) << " us." << std::endl;
@@ -73,7 +71,7 @@ TEST(Title, test4) {
   // ContainsDuplicateBetter
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = t4.ContainsDuplicateBetter(vector4);
+    ret = title_4.ContainsDuplicateBetter(vector4);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ContainsDuplicateBetter cost time : " << diff(start, end) << " us." << std::endl;

@@ -6,8 +6,6 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE5_H
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include "Util.h"
 
 
@@ -59,14 +57,14 @@ class Title5 {
 };
 
 TEST(Title, test5) {
-  Title5 t5;
+  Title5 title_5;
   std::vector<int> vector5 = {1, 2, 3, 1, 3, 4, 2};
   int ret = -1;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    ret = t5.SingleNumber(vector5);
+    ret = title_5.SingleNumber(vector5);
   }
   gettimeofday(&end, nullptr);
   std::cout << "SingleNumber       cost time : " << diff(start, end) << " us." << std::endl;
@@ -77,7 +75,7 @@ TEST(Title, test5) {
   ret = -1;
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = t5.SingleNumberBetter(vector5);
+    ret = title_5.SingleNumberBetter(vector5);
   }
   gettimeofday(&end, nullptr);
   std::cout << "SingleNumberBetter cost time : " << diff(start, end) << " us." << std::endl;

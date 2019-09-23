@@ -6,8 +6,6 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE6_H
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include <unordered_map>
 #include "Util.h"
 
@@ -98,7 +96,7 @@ class Title6 {
 };
 
 TEST(Title, test6) {
-  Title6 t6;
+  Title6 title_6;
   std::vector<int> vector6_1 = {1, 2, 3, 1, 3, 4, 2};
   std::vector<int> vector6_2 = {2, 6, 1, 4};
   std::vector<int> ret;
@@ -106,7 +104,7 @@ TEST(Title, test6) {
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    ret = t6.IntersectBetter(vector6_1, vector6_2);
+    ret = title_6.IntersectBetter(vector6_1, vector6_2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "IntersectBetter cost time : " << diff(start, end) << " us." << std::endl;
@@ -118,7 +116,7 @@ TEST(Title, test6) {
   ret = {0};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = t6.Intersect(vector6_1, vector6_2);
+    ret = title_6.Intersect(vector6_1, vector6_2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "Intersect       cost time : " << diff(start, end) << " us." << std::endl;

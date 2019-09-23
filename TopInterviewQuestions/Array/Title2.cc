@@ -6,7 +6,6 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE2_H
 
 #include <iostream>
-#include <vector>
 #include "Util.h"
 
 
@@ -94,14 +93,14 @@ class Title2 {
 
 TEST(Title, test2) {
 
-  Title2 t2;
+  Title2 title_2;
   std::vector<int> vector2 = {7, 1, 5, 3, 6, 4};
   struct timeval start{}, end{};
   int ret = 0;
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 10000; ++kI) {
-    ret = t2.MaxProfit(vector2);
+    ret = title_2.MaxProfit(vector2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "MaxProfit       cost time : " << diff(start, end) << " us." << std::endl;
@@ -110,7 +109,7 @@ TEST(Title, test2) {
   // MaxProfitBetter
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 10000; ++kJ) {
-    ret = t2.MaxProfitBetter(vector2);
+    ret = title_2.MaxProfitBetter(vector2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "MaxProfitBetter cost time : " << diff(start, end) << " us." << std::endl;

@@ -6,8 +6,6 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE8_H
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include "Util.h"
 
 // 题号 8 : Move Zeroes
@@ -72,13 +70,13 @@ class Title8 {
 };
 
 TEST(Title, test8) {
-  Title8 t8;
+  Title8 title_8;
   std::vector<int> vector8 = {9, 0, 11, 9, 0, 2, 0};
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 1000; ++kI) {
-    t8.MoveZeroesBetter(vector8);
+    title_8.MoveZeroesBetter(vector8);
   }
   gettimeofday(&end, nullptr);
   std::cout << "MoveZeroesBetter cost time : " << diff(start, end) << " us." << std::endl;
@@ -89,7 +87,7 @@ TEST(Title, test8) {
   vector8 = {9, 1, 0, 9, 0, 2, 0};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 1000; ++kJ) {
-    t8.MoveZeroes(vector8);
+    title_8.MoveZeroes(vector8);
   }
   gettimeofday(&end, nullptr);
   std::cout << "MoveZeroes       cost time : " << diff(start, end) << " us." << std::endl;

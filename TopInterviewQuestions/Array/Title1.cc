@@ -6,9 +6,15 @@
 #define TOP_INTERVIEW_QUESTIONS_TITLE1_H
 
 #include <iostream>
-#include <vector>
 #include "Util.h"
 
+//static const auto io_sync_off = []() {
+//  // turn off sync
+//  std::ios::sync_with_stdio(false);
+//  // untie in/out streams
+//  std::cin.tie(nullptr);
+//  return nullptr;
+//}();
 
 // 题号 1 : Remove Duplicates from Sorted Array
 //
@@ -78,11 +84,11 @@ class Title1 {
 TEST(Title, test1) {
 
   struct timeval start{}, end{};
-  Title1 t1;
+  Title1 title_1;
   std::vector<int> ret = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
   gettimeofday(&start, nullptr);
-  int retTitle1 = t1.RemoveDuplicates(ret);
+  int retTitle1 = title_1.RemoveDuplicates(ret);
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 
