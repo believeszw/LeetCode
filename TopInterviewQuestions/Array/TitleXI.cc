@@ -62,8 +62,19 @@ class TitleXI {
 
  public:
   void Rotate(std::vector<std::vector<int>> &matrix) {
+    int size = matrix.size();
 
+    for (int kI = 0; kI < size / 2; ++kI) {
+      for (int kJ = kI; kJ < size - 1 - kI; ++kJ) {
+        int tmp = matrix[size - 1 - kJ][kI];
+        tmp = std::exchange(matrix[kI][kJ], tmp);
+        tmp = std::exchange(matrix[kJ][size - 1 - kI], tmp);
+        tmp = std::exchange(matrix[size - 1 - kI][size - 1 - kJ], tmp);
+        tmp = std::exchange(matrix[size - 1 - kJ][kI], tmp);
+      }
+    }
   }
+
 };
 
 TEST(Title, testXI) {
@@ -78,22 +89,46 @@ TEST(Title, testXI) {
   gettimeofday(&start, nullptr);
   title_xi.Rotate(matrix);
   gettimeofday(&end, nullptr);
-  std::cout << "TwoSum cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "3 * 3 Rotate cost time : " << diff(start, end) << " us." << std::endl;
 
-//  EXPECT_EQ(0, ret[0]);
-//  EXPECT_EQ(1, ret[1]);
+  EXPECT_EQ(7, matrix[0][0]);
+  EXPECT_EQ(4, matrix[0][1]);
+  EXPECT_EQ(1, matrix[0][2]);
+  EXPECT_EQ(8, matrix[1][0]);
+  EXPECT_EQ(5, matrix[1][1]);
+  EXPECT_EQ(2, matrix[1][2]);
+  EXPECT_EQ(9, matrix[2][0]);
+  EXPECT_EQ(6, matrix[2][1]);
+  EXPECT_EQ(3, matrix[2][2]);
 
   std::vector<std::vector<int>> matrix2 = {
-      { 5, 1, 9,11},
-      { 2, 4, 8,10},
+      {5, 1, 9, 11},
+      {2, 4, 8, 10},
       {13, 3, 6, 7},
-      {15,14,12,16}
+      {15, 14, 12, 16}
   };
 
   gettimeofday(&start, nullptr);
   title_xi.Rotate(matrix2);
   gettimeofday(&end, nullptr);
-  std::cout << "TwoSum cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "4 * 4 Rotate cost time : " << diff(start, end) << " us." << std::endl;
+
+  EXPECT_EQ(15, matrix2[0][0]);
+  EXPECT_EQ(13, matrix2[0][1]);
+  EXPECT_EQ(2, matrix2[0][2]);
+  EXPECT_EQ(5, matrix2[0][3]);
+  EXPECT_EQ(14, matrix2[1][0]);
+  EXPECT_EQ(3, matrix2[1][1]);
+  EXPECT_EQ(4, matrix2[1][2]);
+  EXPECT_EQ(1, matrix2[1][3]);
+  EXPECT_EQ(12, matrix2[2][0]);
+  EXPECT_EQ(6, matrix2[2][1]);
+  EXPECT_EQ(8, matrix2[2][2]);
+  EXPECT_EQ(9, matrix2[2][3]);
+  EXPECT_EQ(16, matrix2[3][0]);
+  EXPECT_EQ(7, matrix2[3][1]);
+  EXPECT_EQ(10, matrix2[3][2]);
+  EXPECT_EQ(11, matrix2[3][3]);
 
 }
 
