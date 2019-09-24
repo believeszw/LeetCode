@@ -1,12 +1,11 @@
 //
-// Created by PC-Saw on 2019/06/18.
+// Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLE8_H
-#define TOP_INTERVIEW_QUESTIONS_TITLE8_H
+#ifndef TOP_INTERVIEW_QUESTIONS_TITLEX_H
+#define TOP_INTERVIEW_QUESTIONS_TITLEX_H
 
 #include <iostream>
-#include <unordered_map>
 #include "Util.h"
 
 // 题号 X : Valid Sudoku
@@ -265,4 +264,6 @@ TEST(Title, testX) {
   EXPECT_FALSE(ret);
 
 }
-#endif // TOP_INTERVIEW_QUESTIONS_TITLE8_H
+
+#endif // TOP_INTERVIEW_QUESTIONS_TITLEX_H
+
