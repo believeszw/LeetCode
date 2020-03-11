@@ -2,8 +2,6 @@
 // Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLE3_H
-#define TOP_INTERVIEW_QUESTIONS_TITLE3_H
 
 #include <iostream>
 #include "Util.h"
@@ -130,5 +128,3 @@ TEST(Title, test3) {
 //  std::cout << "]";
 
 }
-
-#endif //TOP_INTERVIEW_QUESTIONS_TITLE3_H

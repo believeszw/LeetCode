@@ -2,11 +2,10 @@
 // Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLE1_H
-#define TOP_INTERVIEW_QUESTIONS_TITLE1_H
 
 #include <iostream>
 #include "Util.h"
+
 
 //static const auto io_sync_off = []() {
 //  // turn off sync
@@ -101,5 +100,3 @@ TEST(Title, test1) {
   std::cout << "]";
 
 }
-
-#endif // TOP_INTERVIEW_QUESTIONS_TITLE1_H

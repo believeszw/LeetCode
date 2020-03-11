@@ -2,8 +2,6 @@
 // Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLE5_H
-#define TOP_INTERVIEW_QUESTIONS_TITLE5_H
 
 #include <iostream>
 #include "Util.h"
@@ -82,5 +80,3 @@ TEST(Title, test5) {
   EXPECT_EQ(4, ret);
 
 }
-
-#endif // TOP_INTERVIEW_QUESTIONS_TITLE5_H

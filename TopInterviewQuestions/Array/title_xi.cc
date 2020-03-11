@@ -2,12 +2,9 @@
 // Created by PC-Saw on 2019/09/24.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLEXI_H
-#define TOP_INTERVIEW_QUESTIONS_TITLEXI_H
 
 #include <iostream>
 #include "Util.h"
-
 
 
 // 题号 9 : Rotate Image
@@ -131,6 +128,3 @@ TEST(Title, testXI) {
   EXPECT_EQ(11, matrix2[3][3]);
 
 }
-
-#endif // TOP_INTERVIEW_QUESTIONS_TITLEXI_H
-

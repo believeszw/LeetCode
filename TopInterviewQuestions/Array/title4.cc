@@ -2,8 +2,6 @@
 // Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLE4_H
-#define TOP_INTERVIEW_QUESTIONS_TITLE4_H
 
 #include <iostream>
 #include <unordered_set>
@@ -77,5 +75,3 @@ TEST(Title, test4) {
   std::cout << "ContainsDuplicateBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_TRUE(ret);
 }
-
-#endif // TOP_INTERVIEW_QUESTIONS_TITLE4_H

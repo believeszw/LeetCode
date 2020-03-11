@@ -2,8 +2,6 @@
 // Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLE6_H
-#define TOP_INTERVIEW_QUESTIONS_TITLE6_H
 
 #include <iostream>
 #include <unordered_map>
@@ -131,5 +129,3 @@ TEST(Title, test6) {
 //  }
 
 }
-
-#endif // TOP_INTERVIEW_QUESTIONS_TITLE6_H

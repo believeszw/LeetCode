@@ -2,8 +2,6 @@
 // Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLE7_H
-#define TOP_INTERVIEW_QUESTIONS_TITLE7_H
 
 #include <iostream>
 #include "Util.h"
@@ -94,5 +92,3 @@ TEST(Title, test7) {
   EXPECT_EQ(9, ret[3]);
 
 }
-
-#endif // TOP_INTERVIEW_QUESTIONS_TITLE7_H

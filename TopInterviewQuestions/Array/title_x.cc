@@ -2,8 +2,6 @@
 // Created by PC-Saw on 2019/09/23.
 //
 
-#ifndef TOP_INTERVIEW_QUESTIONS_TITLEX_H
-#define TOP_INTERVIEW_QUESTIONS_TITLEX_H
 
 #include <iostream>
 #include "Util.h"
@@ -264,6 +262,3 @@ TEST(Title, testX) {
   EXPECT_FALSE(ret);
 
 }
-
-#endif // TOP_INTERVIEW_QUESTIONS_TITLEX_H
-
