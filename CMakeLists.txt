@@ -25,9 +25,9 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # Use-after-scope (clang flag -fsanitize-address-use-after-scope)
 # Double-free, invalid free
 # Memory leaks (experimental)
-# -fno-optimize-sibling-calls 尾递归消除
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -O0 -Werror -fno-omit-frame-pointer -fno-optimize-sibling-calls \
--fno-optimize-sibling-calls -fsanitize=address -fPIE") # -fsanitize=memory -fsanitize-memory-track-origins -pie
+-fsanitize=undefined -fsanitize=address -fPIE") # -fsanitize=memory -fsanitize-memory-track-origins -pie
+# -fno-optimize-sibling-calls 尾递归消除
 # -fno-omit-frame-pointer : 保留函数调用的帧信息，以便分析函数调用关系
 # -fsanitize=undefined : 未定义行为检测
 # -fsanitize=leak 开启后，可以出界更详细的错误信息
