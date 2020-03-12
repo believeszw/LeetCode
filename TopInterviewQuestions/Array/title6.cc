@@ -62,12 +62,12 @@ class Title6 {
     for (int i = 0; i < size1;) {
       for (int j = 0; j < size2;) {
         if (nums1[i] < nums2[j]) {
-          i++;
+          ++i;
         } else if (nums1[i] == nums2[j]) {
-          ret.push_back(nums1[i++]);
-          j++;
+          ret.insert(ret.end(),nums1[i++]);
+          ++j;
         } else {
-          j++;
+          ++j;
         }
 
         // 如果有下标超出返回容器
@@ -86,7 +86,7 @@ class Title6 {
     }
     for (int num2 : nums2) {
       if (hashMap[num2] > 0) {
-        result.push_back(num2);
+        result.insert(result.end(), num2);
         hashMap[num2]--;
       }
     }

@@ -47,7 +47,7 @@ class Title7 {
   }
 
   std::vector<int> PlusOneBetter(std::vector<int> &digits) {
-    int size = static_cast<int>(digits.size());
+    int size = digits.size();
     for (int i = size - 1; i >= 0; --i) {
       if (digits[i] + 1 < 10) {
         digits[i]++;
@@ -57,7 +57,7 @@ class Title7 {
       }
 
     }
-    digits.push_back(digits[size - 1]);
+    digits.insert(digits.end(),digits[size-1]);
     for (int j = size; j > 0; --j) {
       digits[j] = digits[j - 1];
     }
