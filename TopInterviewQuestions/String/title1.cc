@@ -40,18 +40,19 @@ class Title1 {
   void ReverseString2(std::vector<char> &s) {
     int length = s.size();
     for (int kI = 0; kI < length / 2; ++kI) {
-      std::swap(s[kI], s[length-1-kI]);
+      std::swap(s[kI], s[length - 1 - kI]);
     }
   }
   void ReverseString3(std::vector<char> &s) {
     int i = 0, j = s.size() - 1;
 
-    while(i < j) {
+    while (i < j) {
       char temp = s[i];
       s[i] = s[j];
       s[j] = temp;
 
-      i++; j--;
+      i++;
+      j--;
     }
   }
 };
