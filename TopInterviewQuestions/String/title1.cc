@@ -39,7 +39,7 @@ class Title1 {
   }
 };
 
-TEST(Title1, test) {
+TEST(Title1_test_Test, test) {
   Title1 title_1;
   struct timeval start{}, end{};
   std::vector<char> char_vector = {'h', 'e', 'l', 'l', 'o'};

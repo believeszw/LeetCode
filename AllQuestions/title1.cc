@@ -32,8 +32,8 @@ class Title1 {
   std::vector<int> TwoSum(std::vector<int> &nums, int target) {
     // 哈希表和map在这个数量级下性能差异不明显
     std::unordered_map<int, int> unordered_map;
-
-    for (int i = 0; i < nums.size(); ++i) {
+    int size = nums.size();
+    for (int i = 0; i < size; ++i) {
       int complement = target - nums[i];
       if (unordered_map.find(complement) != unordered_map.end()) {
         return std::vector<int>{unordered_map.find(complement)->second, i};

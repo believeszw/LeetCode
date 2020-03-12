@@ -4,6 +4,7 @@
 
 
 #include <iostream>
+#include <algorithm>
 #include <unordered_set>
 #include "util.h"
 

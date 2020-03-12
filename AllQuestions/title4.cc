@@ -59,11 +59,13 @@ nums2 = [2]
     double midData = 0;
     int leftPoint = 0;
     int rightPoint = 0;
+    int size1 = nums1.size();
+    int size2 = nums2.size();
 
     // 获取中位数
     for (int i = 0; i <= n; ++i) {
       // 对数组进行判断是否越界
-      if (leftPoint >= nums1.size()) // 即将进行的操作下标将越界
+      if (leftPoint >= size1) // 即将进行的操作下标将越界
       {
         if (midData == 0)
           midData = ((double) (nums2[m - leftPoint] + nums2[n - leftPoint])) / 2;
@@ -71,7 +73,7 @@ nums2 = [2]
           midData = (midData + nums2[n - leftPoint]) / 2;
         return midData;
       }
-      if (rightPoint >= nums2.size()) // 即将进行的操作下标将越界
+      if (rightPoint >= size2) // 即将进行的操作下标将越界
       {
         if (midData == 0)
           midData = ((double) (nums1[m - rightPoint] + nums1[n - rightPoint])) / 2;

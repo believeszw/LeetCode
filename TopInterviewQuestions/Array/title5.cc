@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include "util.h"
-
+#include <algorithm>
 
 // 题号 5 : Single Number
 //
@@ -34,7 +34,7 @@ class Title5 {
 
   // 先从小到大排序，去掉尾巴进行比较，单个的总是出现在两个数字中的前一个
   int SingleNumber(std::vector<int> &nums) {
-    unsigned long long int size = nums.size();
+    int size = nums.size();
     if (size == 1) return nums[0];
 
     std::sort(nums.begin(), nums.end());
@@ -45,8 +45,8 @@ class Title5 {
   // 利用异或最终结果就是单独的元素
   int SingleNumberBetter(std::vector<int> &nums) {
     int tmp = 0;
-
-    for (int i = 0; i < nums.size(); ++i) {
+    int size = nums.size();
+    for (int i = 0; i < size; ++i) {
       tmp = tmp ^ nums[i];
     }
     return tmp;

@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <unordered_map>
+#include <algorithm>
 #include "util.h"
 
 
@@ -43,8 +44,8 @@ class Title6 {
 
   std::vector<int> IntersectBetter(std::vector<int> &nums1, std::vector<int> &nums2) {
 
-    unsigned long long int size1 = nums1.size();
-    unsigned long long int size2 = nums2.size();
+    int size1 = nums1.size();
+    int size2 = nums2.size();
 
     // 定义新数组
     std::vector<int> ret;
