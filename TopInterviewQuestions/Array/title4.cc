@@ -50,7 +50,7 @@ class Title4 {
   }
 };
 
-TEST(Title, test4) {
+TEST(Title4_test4_Test, test4) {
   Title4 title_4;
   std::vector<int> vector4 = {1, 1, 3, 4, 5, 6, 7};
   bool ret = false;

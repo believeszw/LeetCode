@@ -69,9 +69,9 @@ class TitleX {
   }
 
   bool IsValidSudoku2(std::vector<std::vector<char>> &board) {
-    int r[9][10] = {0};
-    int c[9][10] = {0};
-    int b[3][3][10] = {0};
+    int r[9][10] = {{0}};
+    int c[9][10] = {{0}};
+    int b[3][3][10] = {{{0}}};
 
     for (int i = 0; i < 9; ++i) {
       for (int j = 0; j < 9; ++j) {
@@ -122,7 +122,7 @@ class TitleX {
 
 };
 
-TEST(Title, testX) {
+TEST(Titlex_testX_Test, testX) {
   TitleX title_x;
   std::vector<std::vector<char>> vectorX = {
       {'5', '3', '.', '.', '7', '.', '.', '.', '.'},

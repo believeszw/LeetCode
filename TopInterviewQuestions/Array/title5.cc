@@ -54,7 +54,7 @@ class Title5 {
 
 };
 
-TEST(Title, test5) {
+TEST(Title5_test5_Test, test5) {
   Title5 title_5;
   std::vector<int> vector5 = {1, 2, 3, 1, 3, 4, 2};
   int ret = -1;

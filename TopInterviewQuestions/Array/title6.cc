@@ -93,7 +93,7 @@ class Title6 {
   }
 };
 
-TEST(Title, test6) {
+TEST(Title6__test6_Test, test6) {
   Title6 title_6;
   std::vector<int> vector6_1 = {1, 2, 3, 1, 3, 4, 2};
   std::vector<int> vector6_2 = {2, 6, 1, 4};
@@ -101,9 +101,7 @@ TEST(Title, test6) {
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 100; ++kI) {
-    ret = title_6.IntersectBetter(vector6_1, vector6_2);
-  }
+  ret = title_6.IntersectBetter(vector6_1, vector6_2);
   gettimeofday(&end, nullptr);
   std::cout << "IntersectBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(1, ret[0]);

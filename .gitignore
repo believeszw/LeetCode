@@ -6,6 +6,7 @@
 !TopInterviewQuestions
 !CMakeLists.txt
 !readme.md
+!googletest
 将删除 .gitignore
 将删除 Array/
 将删除 CMakeLists.txt

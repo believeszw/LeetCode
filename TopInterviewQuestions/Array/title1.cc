@@ -80,7 +80,7 @@ class Title1 {
   }
 };
 
-TEST(Title, test1) {
+TEST(Title1_test1_Test, test1) {
 
   struct timeval start{}, end{};
   Title1 title_1;

@@ -89,7 +89,7 @@ class Title2 {
   }
 };
 
-TEST(Title, test2) {
+TEST(Title2_test2_Test, test2) {
 
   Title2 title_2;
   std::vector<int> vector2 = {7, 1, 5, 3, 6, 4};

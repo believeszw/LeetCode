@@ -69,7 +69,6 @@ class Title3 {
 
   // 还有一个思路，三次翻转，前2次以k为分界线进行翻转，最后全部翻转
   void Rotate(std::vector<int> &nums, int k) {
-    int i, j;
     int len = nums.size();
     k = k % len;
     reverse(nums.begin(), nums.end() - k);
@@ -79,7 +78,7 @@ class Title3 {
 
 };
 
-TEST(Title, test3) {
+TEST(Title3_test3_Test, test3) {
 
   Title3 title_3;
   std::vector<int> vector3 = {1, 2, 3, 4, 5, 6, 7, 8};

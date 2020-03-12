@@ -74,7 +74,7 @@ class TitleXI {
 
 };
 
-TEST(Title, testXI) {
+TEST(Titlex_testXI_Test, testXI) {
   TitleXI title_xi;
   struct timeval start{}, end{};
   std::vector<std::vector<int>> matrix = {
