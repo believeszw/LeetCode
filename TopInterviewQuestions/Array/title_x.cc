@@ -14,7 +14,7 @@
 class TitleX {
 
  public:
-  bool IsValidSudoku(std::vector<std::vector<char>> &board) {
+  static bool IsValidSudoku(std::vector<std::vector<char>> &board) {
     std::vector<std::vector<int>> row_vector(9, std::vector<int>(9, 0));
     std::vector<std::vector<int>> col_vector(9, std::vector<int>(9, 0));
 
@@ -68,7 +68,7 @@ class TitleX {
     return true;
   }
 
-  bool IsValidSudoku2(std::vector<std::vector<char>> &board) {
+  static bool IsValidSudoku2(std::vector<std::vector<char>> &board) {
     int r[9][10] = {{0}};
     int c[9][10] = {{0}};
     int b[3][3][10] = {{{0}}};
@@ -88,7 +88,7 @@ class TitleX {
     return true;
   }
 
-  bool IsValidSudoku3(std::vector<std::vector<char>> &board) {
+  static bool IsValidSudoku3(std::vector<std::vector<char>> &board) {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         if (board[i][j] != '.') {
@@ -123,7 +123,7 @@ class TitleX {
 };
 
 TEST(Titlex_testX_Test, testX) {
-  TitleX title_x;
+
   std::vector<std::vector<char>> vectorX = {
       {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
       {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
@@ -139,21 +139,21 @@ TEST(Titlex_testX_Test, testX) {
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku(vectorX);
+  ret = TitleX::IsValidSudoku(vectorX);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_TRUE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku2(vectorX);
+  ret = TitleX::IsValidSudoku2(vectorX);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_TRUE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku3(vectorX);
+  ret = TitleX::IsValidSudoku3(vectorX);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku3 cost time : " << diff(start, end) << " us." << std::endl;
 
@@ -173,21 +173,21 @@ TEST(Titlex_testX_Test, testX) {
   ret = true;
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku(vectorX2);
+  ret = TitleX::IsValidSudoku(vectorX2);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_FALSE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku2(vectorX2);
+  ret = TitleX::IsValidSudoku2(vectorX2);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_FALSE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku3(vectorX2);
+  ret = TitleX::IsValidSudoku3(vectorX2);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku3 cost time : " << diff(start, end) << " us." << std::endl;
 
@@ -207,21 +207,21 @@ TEST(Titlex_testX_Test, testX) {
   ret = true;
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku(vectorX3);
+  ret = TitleX::IsValidSudoku(vectorX3);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_FALSE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku2(vectorX3);
+  ret = TitleX::IsValidSudoku2(vectorX3);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_FALSE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku3(vectorX3);
+  ret = TitleX::IsValidSudoku3(vectorX3);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku3 cost time : " << diff(start, end) << " us." << std::endl;
 
@@ -241,21 +241,21 @@ TEST(Titlex_testX_Test, testX) {
   ret = true;
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku(vectorX4);
+  ret = TitleX::IsValidSudoku(vectorX4);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_FALSE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku2(vectorX4);
+  ret = TitleX::IsValidSudoku2(vectorX4);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_FALSE(ret);
 
   gettimeofday(&start, nullptr);
-  ret = title_x.IsValidSudoku3(vectorX4);
+  ret = TitleX::IsValidSudoku3(vectorX4);
   gettimeofday(&end, nullptr);
   std::cout << "IsValidSudoku3 cost time : " << diff(start, end) << " us." << std::endl;
 

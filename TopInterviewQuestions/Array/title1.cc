@@ -63,7 +63,7 @@ class Title1 {
  public:
 
   // 两个游标向后移动，一个遍历，一个将不重复元素向前移动
-  int RemoveDuplicates(std::vector<int> &nums) {
+  static int RemoveDuplicates(std::vector<int> &nums) {
 
     int n = nums.size();
     if (n <= 1) {
@@ -83,11 +83,10 @@ class Title1 {
 TEST(Title1_test1_Test, test1) {
 
   struct timeval start{}, end{};
-  Title1 title_1;
   std::vector<int> ret = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
   gettimeofday(&start, nullptr);
-  int retTitle1 = title_1.RemoveDuplicates(ret);
+  int retTitle1 = Title1::RemoveDuplicates(ret);
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 

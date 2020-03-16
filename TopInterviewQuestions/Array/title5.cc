@@ -33,7 +33,7 @@ class Title5 {
  public:
 
   // 先从小到大排序，去掉尾巴进行比较，单个的总是出现在两个数字中的前一个
-  int SingleNumber(std::vector<int> &nums) {
+  static int SingleNumber(std::vector<int> &nums) {
     int size = nums.size();
     if (size == 1) return nums[0];
 
@@ -43,7 +43,7 @@ class Title5 {
   }
 
   // 利用异或最终结果就是单独的元素
-  int SingleNumberBetter(std::vector<int> &nums) {
+  static int SingleNumberBetter(std::vector<int> &nums) {
     int tmp = 0;
     int size = nums.size();
     for (int i = 0; i < size; ++i) {
@@ -55,14 +55,14 @@ class Title5 {
 };
 
 TEST(Title5_test5_Test, test5) {
-  Title5 title_5;
+
   std::vector<int> vector5 = {1, 2, 3, 1, 3, 4, 2};
   int ret = -1;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    ret = title_5.SingleNumber(vector5);
+    ret = Title5::SingleNumber(vector5);
   }
   gettimeofday(&end, nullptr);
   std::cout << "SingleNumber       cost time : " << diff(start, end) << " us." << std::endl;
@@ -73,7 +73,7 @@ TEST(Title5_test5_Test, test5) {
   ret = -1;
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = title_5.SingleNumberBetter(vector5);
+    ret = Title5::SingleNumberBetter(vector5);
   }
   gettimeofday(&end, nullptr);
   std::cout << "SingleNumberBetter cost time : " << diff(start, end) << " us." << std::endl;

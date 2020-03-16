@@ -42,7 +42,7 @@ class Title6 {
 
  public:
 
-  std::vector<int> IntersectBetter(std::vector<int> &nums1, std::vector<int> &nums2) {
+  static std::vector<int> IntersectBetter(std::vector<int> &nums1, std::vector<int> &nums2) {
 
     int size1 = nums1.size();
     int size2 = nums2.size();
@@ -78,7 +78,7 @@ class Title6 {
     return ret;
   }
 
-  std::vector<int> Intersect(std::vector<int> &nums1, std::vector<int> &nums2) {
+  static std::vector<int> Intersect(std::vector<int> &nums1, std::vector<int> &nums2) {
     std::unordered_map<int, int> hashMap;
     std::vector<int> result;
     for (int num1 : nums1) {
@@ -95,14 +95,14 @@ class Title6 {
 };
 
 TEST(Title6__test6_Test, test6) {
-  Title6 title_6;
+
   std::vector<int> vector6_1 = {1, 2, 3, 1, 3, 4, 2};
   std::vector<int> vector6_2 = {2, 6, 1, 4};
   std::vector<int> ret;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
-  ret = title_6.IntersectBetter(vector6_1, vector6_2);
+  ret = Title6::IntersectBetter(vector6_1, vector6_2);
   gettimeofday(&end, nullptr);
   std::cout << "IntersectBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(1, ret[0]);
@@ -113,7 +113,7 @@ TEST(Title6__test6_Test, test6) {
   ret = {0};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = title_6.Intersect(vector6_1, vector6_2);
+    ret = Title6::Intersect(vector6_1, vector6_2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "Intersect       cost time : " << diff(start, end) << " us." << std::endl;

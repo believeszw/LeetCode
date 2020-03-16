@@ -34,7 +34,7 @@ class Title7 {
 
  public:
 
-  std::vector<int> PlusOne(std::vector<int> &digits) {
+  static std::vector<int> PlusOne(std::vector<int> &digits) {
     int carry = 1;
     for (int i = static_cast<int>(digits.size() - 1); i >= 0; i--) {
       int s = digits[i] + carry;
@@ -46,7 +46,7 @@ class Title7 {
     return digits;
   }
 
-  std::vector<int> PlusOneBetter(std::vector<int> &digits) {
+  static std::vector<int> PlusOneBetter(std::vector<int> &digits) {
     int size = digits.size();
     for (int i = size - 1; i >= 0; --i) {
       if (digits[i] + 1 < 10) {
@@ -67,7 +67,7 @@ class Title7 {
 };
 
 TEST(Title_test7_Test, test7) {
-  Title7 title_7;
+
   std::vector<int> vector7_1 = {9, 9, 9, 8};
   std::vector<int> vector7_2 = {9, 9, 9, 8};
   std::vector<int> ret = {0};
@@ -75,7 +75,7 @@ TEST(Title_test7_Test, test7) {
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    ret = title_7.PlusOne(vector7_1);
+    ret = Title7::PlusOne(vector7_1);
   }
   gettimeofday(&end, nullptr);
   std::cout << "PlusOne       cost time : " << diff(start, end) << " us." << std::endl;
@@ -85,7 +85,7 @@ TEST(Title_test7_Test, test7) {
   ret = {0};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = title_7.PlusOneBetter(vector7_2);
+    ret = Title7::PlusOneBetter(vector7_2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "PlusOneBetter cost time : " << diff(start, end) << " us." << std::endl;

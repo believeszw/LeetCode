@@ -41,7 +41,7 @@ class Title3 {
  public:
 
   // 较优解
-  void RotateBetter(std::vector<int> &nums, int k) {
+  static void RotateBetter(std::vector<int> &nums, int k) {
 
     int n = nums.size();
 
@@ -69,7 +69,7 @@ class Title3 {
   }
 
   // 还有一个思路，三次翻转，前2次以k为分界线进行翻转，最后全部翻转
-  void Rotate(std::vector<int> &nums, int k) {
+  static void Rotate(std::vector<int> &nums, int k) {
     int len = nums.size();
     k = k % len;
     reverse(nums.begin(), nums.end() - k);
@@ -81,11 +81,10 @@ class Title3 {
 
 TEST(Title3_test3_Test, test3) {
 
-  Title3 title_3;
   std::vector<int> vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   struct timeval start{}, end{};
 
-  title_3.Rotate(vector3, 3);
+  Title3::Rotate(vector3, 3);
   EXPECT_EQ(6, vector3[0]);
   EXPECT_EQ(7, vector3[1]);
   EXPECT_EQ(8, vector3[2]);
@@ -94,7 +93,7 @@ TEST(Title3_test3_Test, test3) {
   EXPECT_EQ(3, vector3[5]);
 
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
-  title_3.RotateBetter(vector3, 3);
+  Title3::RotateBetter(vector3, 3);
   EXPECT_EQ(6, vector3[0]);
   EXPECT_EQ(7, vector3[1]);
   EXPECT_EQ(8, vector3[2]);
@@ -106,7 +105,7 @@ TEST(Title3_test3_Test, test3) {
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    title_3.Rotate(vector3, 3);
+    Title3::Rotate(vector3, 3);
   }
   gettimeofday(&end, nullptr);
   std::cout << "Rotate       cost time : " << diff(start, end) << " us." << std::endl;
@@ -114,7 +113,7 @@ TEST(Title3_test3_Test, test3) {
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    title_3.RotateBetter(vector3, 3);
+    Title3::RotateBetter(vector3, 3);
   }
   gettimeofday(&end, nullptr);
   std::cout << "RotateBetter cost time : " << diff(start, end) << " us." << std::endl;

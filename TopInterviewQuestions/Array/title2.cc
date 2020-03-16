@@ -45,7 +45,7 @@ class Title2 {
 
  public:
 
-  int MaxProfit(std::vector<int> &prices) {
+  static int MaxProfit(std::vector<int> &prices) {
 
     // 判断是否为空
     int n = prices.size();
@@ -72,7 +72,7 @@ class Title2 {
   }
 
   // 更优解
-  int MaxProfitBetter(std::vector<int> &prices) {
+  static int MaxProfitBetter(std::vector<int> &prices) {
     // 判断是否为空
     int n = prices.size();
     if (n == 0) return 0;
@@ -91,14 +91,13 @@ class Title2 {
 
 TEST(Title2_test2_Test, test2) {
 
-  Title2 title_2;
   std::vector<int> vector2 = {7, 1, 5, 3, 6, 4};
   struct timeval start{}, end{};
   int ret = 0;
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 10000; ++kI) {
-    ret = title_2.MaxProfit(vector2);
+    ret = Title2::MaxProfit(vector2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "MaxProfit       cost time : " << diff(start, end) << " us." << std::endl;
@@ -107,7 +106,7 @@ TEST(Title2_test2_Test, test2) {
   // MaxProfitBetter
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 10000; ++kJ) {
-    ret = title_2.MaxProfitBetter(vector2);
+    ret = Title2::MaxProfitBetter(vector2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "MaxProfitBetter cost time : " << diff(start, end) << " us." << std::endl;

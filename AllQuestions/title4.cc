@@ -36,7 +36,7 @@ nums2 = [2]
 则中位数是 2.0
  */
 // 我的方法
-  double FindMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
+  static double FindMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
     int size = 0;
     if (nums1.size() != 0 || nums2.size() != 0) {
       size = nums1.size() + nums2.size();
@@ -107,7 +107,7 @@ nums2 = [2]
   }
 
 // 性能最优解法
-  int FindKth(vector<int> nums1, vector<int> nums2, int k) {
+  static int FindKth(vector<int> nums1, vector<int> nums2, int k) {
     if (nums1.empty()) return nums2[k - 1];
     if (nums2.empty()) return nums1[k - 1];
     if (k == 1) return min(nums1[0], nums2[0]);
@@ -120,7 +120,7 @@ nums2 = [2]
     return 0;
   }
 
-  double FindMedianSortedArrays2(vector<int> &nums1, vector<int> &nums2) {
+  static double FindMedianSortedArrays2(vector<int> &nums1, vector<int> &nums2) {
     int m = nums1.size(), n = nums2.size();
     return (FindKth(nums1, nums2, (m + n + 1) / 2) + FindKth(nums1, nums2, (m + n + 2) / 2)) / 2.0;
   }

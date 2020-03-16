@@ -36,11 +36,11 @@ Output: true
 class Title4 {
 
  public:
-  bool ContainsDuplicate(std::vector<int> &nums) {
+  static bool ContainsDuplicate(std::vector<int> &nums) {
     return nums.size() > std::unordered_set<int>(nums.begin(), nums.end()).size();
   }
 
-  bool ContainsDuplicateBetter(std::vector<int> &nums) {
+  static bool ContainsDuplicateBetter(std::vector<int> &nums) {
     int size = nums.size();
     if (size <= 1) return false;
 
@@ -52,14 +52,14 @@ class Title4 {
 };
 
 TEST(Title4_test4_Test, test4) {
-  Title4 title_4;
+
   std::vector<int> vector4 = {1, 1, 3, 4, 5, 6, 7};
   bool ret = false;
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 100; ++kI) {
-    ret = title_4.ContainsDuplicate(vector4);
+    ret = Title4::ContainsDuplicate(vector4);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ContainsDuplicate       cost time : " << diff(start, end) << " us." << std::endl;
@@ -70,7 +70,7 @@ TEST(Title4_test4_Test, test4) {
   // ContainsDuplicateBetter
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = title_4.ContainsDuplicateBetter(vector4);
+    ret = Title4::ContainsDuplicateBetter(vector4);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ContainsDuplicateBetter cost time : " << diff(start, end) << " us." << std::endl;

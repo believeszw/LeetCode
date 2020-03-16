@@ -39,6 +39,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -O0 -Werror -fno-omit-frame-poi
 #set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG " )   # release包优化
 
 add_subdirectory(AllQuestions)
+add_subdirectory(ByteDance)
 add_subdirectory(TopInterviewQuestions)
 
 #IF (WIN32)

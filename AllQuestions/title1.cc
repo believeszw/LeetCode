@@ -29,7 +29,7 @@ return [0, 1].
 class Title1 {
 
  public:
-  std::vector<int> TwoSum(std::vector<int> &nums, int target) {
+  static std::vector<int> TwoSum(std::vector<int> &nums, int target) {
     // 哈希表和map在这个数量级下性能差异不明显
     std::unordered_map<int, int> unordered_map;
     int size = nums.size();
@@ -45,13 +45,13 @@ class Title1 {
 };
 
 TEST(Title, test) {
-  Title1 title_1;
+
   std::vector<int> vector = {2, 7, 11, 15};
   std::vector<int> ret = {0};
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
-  ret = title_1.TwoSum(vector, 9);
+  ret = Title1::TwoSum(vector, 9);
   gettimeofday(&end, nullptr);
   std::cout << "TwoSum cost time : " << diff(start, end) << " us." << std::endl;
 

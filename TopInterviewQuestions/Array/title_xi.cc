@@ -58,7 +58,7 @@ rotate the input matrix in-place such that it becomes:
 class TitleXI {
 
  public:
-  void Rotate(std::vector<std::vector<int>> &matrix) {
+  static void Rotate(std::vector<std::vector<int>> &matrix) {
     int size = matrix.size();
 
     for (int kI = 0; kI < size / 2; ++kI) {
@@ -75,7 +75,7 @@ class TitleXI {
 };
 
 TEST(Titlex_testXI_Test, testXI) {
-  TitleXI title_xi;
+
   struct timeval start{}, end{};
   std::vector<std::vector<int>> matrix = {
       {1, 2, 3},
@@ -84,7 +84,7 @@ TEST(Titlex_testXI_Test, testXI) {
   };
 
   gettimeofday(&start, nullptr);
-  title_xi.Rotate(matrix);
+  TitleXI::Rotate(matrix);
   gettimeofday(&end, nullptr);
   std::cout << "3 * 3 Rotate cost time : " << diff(start, end) << " us." << std::endl;
 
@@ -106,7 +106,7 @@ TEST(Titlex_testXI_Test, testXI) {
   };
 
   gettimeofday(&start, nullptr);
-  title_xi.Rotate(matrix2);
+  TitleXI::Rotate(matrix2);
   gettimeofday(&end, nullptr);
   std::cout << "4 * 4 Rotate cost time : " << diff(start, end) << " us." << std::endl;
 

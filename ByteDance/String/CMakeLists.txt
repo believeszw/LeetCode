@@ -8,7 +8,7 @@ SET(SRC title1.cc)
 
 SET(TEST_LIB gtest gtest_main -lpthread)
 
-add_executable(StrChallegeTest ${SRC})
+add_executable(StringTest ${SRC})
 
 target_link_libraries(StringTest ${TEST_LIB})
 INSTALL(TARGETS StringTest DESTINATION ${EXECUTABLE_OUTPUT_PATH})
