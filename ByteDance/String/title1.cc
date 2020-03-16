@@ -37,26 +37,51 @@ explain: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
 class Title1 {
 
  public:
-  int LengthOfLongestSubstring(std::string str) {
-    int left = 0, right = 0, ret = 0;
-    int len = str.length();
+  static int LengthOfLongestSubstring(std::string str) {
+    int left{0}, right{0}, ret{0}, length{0};
+    int len = str.size();
+
     while (right < len) {
-      for (int kI = 0; kI < right; ++kI) {
-        if (str.at(kI) == str.at(right)) {
-          ret = right - left;
-          left = kI + 1;
+      char tmpChar = str.at(right);
+      for (int index = left; index < right; ++index) {
+        if (str.at(index) == tmpChar) {
+          left = index + 1;
+          length = right - left;
+          break;
         }
       }
-
-      right++;
+      ++right;
+      ret = std::max(++length, ret);
     }
-
     return ret;
+  }
+
+  // LeetCode 上采用映射的一种思路
+  static int LengthOfLongestSubstring2(std::string s) {
+
+    int mp[256];
+    for (int &i : mp) i = -1;
+    int max = 0;
+    int len = 0;
+    int j = -2;
+    for (int i = 0; i < s.size(); i++) {
+      if (mp[(int) s[i]] == -1 || mp[(int) s[i]] <= j) {
+        mp[(int) s[i]] = i;
+        len++;
+        if (len > max) max = len;
+      } else {
+
+        len = i - mp[(int) s[i]];
+        j = mp[(int) s[i]];
+        mp[(int) s[i]] = i;
+      }
+    }
+    return max;
   }
 };
 
 TEST(Title1_test_Test, test) {
-  Title1 title_1;
+
   struct timeval start{}, end{};
   std::string str1_1 = "abcabcbb";
   std::string str1_2 = "bbbbb";
@@ -64,14 +89,23 @@ TEST(Title1_test_Test, test) {
   int ret = -1;
 
   gettimeofday(&start, nullptr);
-//  for (int kI = 0; kI < 101; ++kI) {
-  ret = title_1.LengthOfLongestSubstring(str1_1);
-//  }
+  ret = Title1::LengthOfLongestSubstring(str1_1);
   gettimeofday(&end, nullptr);
   std::cout << "ReverseString cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ(3, ret);
 
+  gettimeofday(&start, nullptr);
+  ret = Title1::LengthOfLongestSubstring2(str1_2);
+  gettimeofday(&end, nullptr);
+  std::cout << "ReverseString cost time : " << diff(start, end) << " us." << std::endl;
 
+  EXPECT_EQ(1, ret);
 
+  gettimeofday(&start, nullptr);
+  ret = Title1::LengthOfLongestSubstring(str1_1);
+  gettimeofday(&end, nullptr);
+  std::cout << "ReverseString cost time : " << diff(start, end) << " us." << std::endl;
+
+  EXPECT_EQ(3, ret);
 }

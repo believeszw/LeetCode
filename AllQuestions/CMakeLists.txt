@@ -1,7 +1,5 @@
 project(AllQuestions)
 
-set(CMAKE_CXX_STANDARD 14)
-
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${COMPILE_PLAT})
 
 SET(SRC title1.cc title4.cc)
