@@ -122,7 +122,7 @@ class TitleX {
 
 };
 
-TEST(Titlex_testX_Test, testX) {
+TEST(TitleX, testX) {
 
   std::vector<std::vector<char>> vectorX = {
       {'5', '3', '.', '.', '7', '.', '.', '.', '.'},

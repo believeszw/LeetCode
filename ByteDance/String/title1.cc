@@ -80,7 +80,7 @@ class Title1 {
   }
 };
 
-TEST(Title1_test_Test, test) {
+TEST(Title1, test) {
 
   struct timeval start{}, end{};
   std::string str1_1 = "abcabcbb";

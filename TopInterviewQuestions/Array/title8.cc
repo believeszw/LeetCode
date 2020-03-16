@@ -67,7 +67,7 @@ class Title8 {
   }
 };
 
-TEST(Title8_test8_Test, test8) {
+TEST(Title8, test8) {
 
   std::vector<int> vector8 = {9, 0, 11, 9, 0, 2, 0};
   struct timeval start{}, end{};
