@@ -61,10 +61,8 @@ class Title1 {
 
     int mp[256];
     for (int &i : mp) i = -1;
-    int max = 0;
-    int len = 0;
-    int j = -2;
-    for (int i = 0; i < s.size(); i++) {
+    int max = 0, len = 0, j = -2, size = s.size();
+    for (int i = 0; i < size; i++) {
       if (mp[(int) s[i]] == -1 || mp[(int) s[i]] <= j) {
         mp[(int) s[i]] = i;
         len++;
