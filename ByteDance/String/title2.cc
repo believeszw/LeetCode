@@ -35,20 +35,60 @@
 class Title2 {
 
  public:
-  static std::string LongestCommonPrefix(std::vector<std::string>& strs) {
+  static std::string LongestCommonPrefix(std::vector<std::string> &strs) {
+    if (strs.empty()) return "";
 
-    return "";
+    std::string first = strs[0];
+    if (first.empty()) return "";
+
+    unsigned int size = strs.size(), index = 0;
+    if (size == 1) return first;
+
+    std::string ret;
+    bool flag = true;
+    while (flag) {
+      char tmp = first[index];
+
+      for (unsigned int kI = 1; kI < size; ++kI) {
+        if (tmp != strs[kI][index])
+          return ret;
+        if (index == strs[kI].size() - 1)
+          flag = false;
+      }
+
+      ++index;
+      ret += tmp;
+    }
+
+    return ret;
   }
 
-
+  static std::string LongestCommonPrefix2(std::vector<std::string> &strs) {
+    std::string ret = !strs.empty() ? strs[0] : "";
+    for (const auto &str : strs) {
+      while (str.substr(0, ret.size()) != ret) {
+        ret = ret.substr(0, ret.size() - 1);
+        if (ret.empty()) return ret;
+      }
+    }
+    return ret;
+  }
 };
 
 TEST(Title2, test) {
 
   struct timeval start{}, end{};
-  std::vector<std::string> str2_1 = {"flower", "flow", "flight"};
-  std::vector<std::string> str2_2 = {"dog", "racecar", "car"};
   std::string ret;
+
+  std::vector<std::string> str2_1;
+  str2_1.insert(str2_1.end(), "flower");
+  str2_1.insert(str2_1.end(), "flow");
+  str2_1.insert(str2_1.end(), "flight");
+
+  std::vector<std::string> str2_2;
+  str2_2.insert(str2_2.end(), "dog");
+  str2_2.insert(str2_2.end(), "racecar");
+  str2_2.insert(str2_2.end(), "car");
 
   gettimeofday(&start, nullptr);
   ret = Title2::LongestCommonPrefix(str2_1);
@@ -58,11 +98,12 @@ TEST(Title2, test) {
   EXPECT_EQ("fl", ret);
 
   gettimeofday(&start, nullptr);
-  ret = Title2::LongestCommonPrefix(str2_2);
+  ret = Title2::LongestCommonPrefix2(str2_1);
   gettimeofday(&end, nullptr);
-  std::cout << "LongestCommonPrefix cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "LongestCommonPrefix2 cost time : " << diff(start, end) << " us." << std::endl;
 
+  EXPECT_EQ("fl", ret);
+
+  ret = Title2::LongestCommonPrefix2(str2_2);
   EXPECT_EQ("", ret);
-
-
 }
