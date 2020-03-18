@@ -1,10 +1,11 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 // 题号 X : Valid Sudoku
 //
@@ -14,7 +15,7 @@
 class TitleX {
 
  public:
-  static bool IsValidSudoku(std::vector<std::vector<char>> &board) {
+  static bool IsValidSudoku(const std::vector<std::vector<char>> &board) {
     std::vector<std::vector<int>> row_vector(9, std::vector<int>(9, 0));
     std::vector<std::vector<int>> col_vector(9, std::vector<int>(9, 0));
 
@@ -29,10 +30,10 @@ class TitleX {
 
         // 先排除 ‘.’
         if (board[index_x][index_y] == '.') {
-          if (++index_y % 3 == 0) { // 列前进
-            index_x++;              // 换行
+          if (++index_y % 3 == 0) {  // 列前进
+            index_x++;               // 换行
             if (index_x % 3 != 0)
-              index_y -= 3;        // 列重置
+              index_y -= 3;          // 列重置
           }
           continue;
         }
@@ -52,23 +53,23 @@ class TitleX {
         if (vector[value] > 1)
           return false;
 
-        if (++index_y % 3 == 0) { // 列前进
-          index_x++;              // 换行
+        if (++index_y % 3 == 0) {  // 列前进
+          index_x++;               // 换行
           if (index_x % 3 != 0)
-            index_y -= 3;        // 列重置
+            index_y -= 3;          // 列重置
         }
       }
 
       if (index_y != 9)
-        index_x -= 3; // 行重置
+        index_x -= 3;  // 行重置
       else
-        index_y = 0;  // 列重置
+        index_y = 0;   // 列重置
     }
 
     return true;
   }
 
-  static bool IsValidSudoku2(std::vector<std::vector<char>> &board) {
+  static bool IsValidSudoku2(const std::vector<std::vector<char>> &board) {
     int r[9][10] = {{0}};
     int c[9][10] = {{0}};
     int b[3][3][10] = {{{0}}};
@@ -88,7 +89,7 @@ class TitleX {
     return true;
   }
 
-  static bool IsValidSudoku3(std::vector<std::vector<char>> &board) {
+  static bool IsValidSudoku3(const std::vector<std::vector<char>> &board) {
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         if (board[i][j] != '.') {

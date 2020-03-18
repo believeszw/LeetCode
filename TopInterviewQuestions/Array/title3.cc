@@ -1,11 +1,12 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
 #include <algorithm>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
 // 题号 3 : Rotate Array
@@ -41,9 +42,9 @@ class Title3 {
  public:
 
   // 较优解
-  static void RotateBetter(std::vector<int> &nums, int k) {
+  static void RotateBetter(std::vector<int> *nums, int k) {
 
-    int n = nums.size();
+    int n = nums->size();
 
     if (n == 0 || k == 0) return;
     if (k >= n) k = k % n;
@@ -69,12 +70,12 @@ class Title3 {
   }
 
   // 还有一个思路，三次翻转，前2次以k为分界线进行翻转，最后全部翻转
-  static void Rotate(std::vector<int> &nums, int k) {
-    int len = nums.size();
+  static void Rotate(std::vector<int> *nums, int k) {
+    int len = nums->size();
     k = k % len;
-    reverse(nums.begin(), nums.end() - k);
-    reverse(nums.end() - k, nums.end());
-    reverse(nums.begin(), nums.end());
+    reverse(nums->begin(), nums->end() - k);
+    reverse(nums->end() - k, nums->end());
+    reverse(nums->begin(), nums->end());
   }
 
 };
@@ -84,7 +85,7 @@ TEST(Title3, test3) {
   std::vector<int> vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   struct timeval start{}, end{};
 
-  Title3::Rotate(vector3, 3);
+  Title3::Rotate(&vector3, 3);
   EXPECT_EQ(6, vector3[0]);
   EXPECT_EQ(7, vector3[1]);
   EXPECT_EQ(8, vector3[2]);
@@ -93,7 +94,7 @@ TEST(Title3, test3) {
   EXPECT_EQ(3, vector3[5]);
 
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
-  Title3::RotateBetter(vector3, 3);
+  Title3::RotateBetter(&vector3, 3);
   EXPECT_EQ(6, vector3[0]);
   EXPECT_EQ(7, vector3[1]);
   EXPECT_EQ(8, vector3[2]);
@@ -105,7 +106,7 @@ TEST(Title3, test3) {
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    Title3::Rotate(vector3, 3);
+    Title3::Rotate(&vector3, 3);
   }
   gettimeofday(&end, nullptr);
   std::cout << "Rotate       cost time : " << diff(start, end) << " us." << std::endl;
@@ -113,7 +114,7 @@ TEST(Title3, test3) {
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
   gettimeofday(&start, nullptr);
   for (int kJ = 0; kJ < 100; ++kJ) {
-    Title3::RotateBetter(vector3, 3);
+    Title3::RotateBetter(&vector3, 3);
   }
   gettimeofday(&end, nullptr);
   std::cout << "RotateBetter cost time : " << diff(start, end) << " us." << std::endl;

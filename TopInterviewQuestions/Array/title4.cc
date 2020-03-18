@@ -1,12 +1,13 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
 #include <algorithm>
 #include <unordered_set>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
 // 题号 4 : Contains Duplicate
@@ -36,16 +37,18 @@ Output: true
 class Title4 {
 
  public:
-  static bool ContainsDuplicate(std::vector<int> &nums) {
+  static bool ContainsDuplicate(const std::vector<int> &nums) {
     return nums.size() > std::unordered_set<int>(nums.begin(), nums.end()).size();
   }
 
-  static bool ContainsDuplicateBetter(std::vector<int> &nums) {
+  static bool ContainsDuplicateBetter(std::vector<int> &nums) { // NOLINT
     int size = nums.size();
     if (size <= 1) return false;
 
     std::sort(nums.begin(), nums.end());
-    for (int i = 1; i < size; ++i) if (nums[i] == nums[i - 1]) return true;
+    for (int i = 1; i < size; ++i)
+      if (nums[i] == nums[i - 1])
+        return true;
 
     return false;
   }

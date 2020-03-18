@@ -1,10 +1,11 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 // 题号 7 : Plus One
 //
@@ -34,7 +35,7 @@ class Title7 {
 
  public:
 
-  static std::vector<int> PlusOne(std::vector<int> &digits) {
+  static std::vector<int> PlusOne(std::vector<int> &digits) { // NOLINT
     int carry = 1;
     for (int i = static_cast<int>(digits.size() - 1); i >= 0; i--) {
       int s = digits[i] + carry;
@@ -46,7 +47,7 @@ class Title7 {
     return digits;
   }
 
-  static std::vector<int> PlusOneBetter(std::vector<int> &digits) {
+  static std::vector<int> PlusOneBetter(std::vector<int> &digits) { // NOLINT
     int size = digits.size();
     for (int i = size - 1; i >= 0; --i) {
       if (digits[i] + 1 < 10) {
@@ -57,7 +58,7 @@ class Title7 {
       }
 
     }
-    digits.insert(digits.end(),digits[size-1]);
+    digits.insert(digits.end(), digits[size-1]);
     for (int j = size; j > 0; --j) {
       digits[j] = digits[j - 1];
     }

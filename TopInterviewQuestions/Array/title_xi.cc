@@ -1,10 +1,11 @@
 //
 // Created by PC-Saw on 2019/09/24.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
 // 题号 9 : Rotate Image
@@ -15,7 +16,7 @@
 //
 // Note:
 //
-//You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+// You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
 //
 
 /*
@@ -58,7 +59,7 @@ rotate the input matrix in-place such that it becomes:
 class TitleXI {
 
  public:
-  static void Rotate(std::vector<std::vector<int>> &matrix) {
+  static void Rotate(std::vector<std::vector<int>> &matrix) { // NOLINT
     int size = matrix.size();
 
     for (int kI = 0; kI < size / 2; ++kI) {

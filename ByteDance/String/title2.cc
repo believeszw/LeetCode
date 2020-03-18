@@ -1,10 +1,10 @@
 //
 // Created by believe on 2020/3/16.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
-
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
 // 题号 2 : 最长公共前缀

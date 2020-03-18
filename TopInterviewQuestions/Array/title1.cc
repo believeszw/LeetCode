@@ -1,13 +1,14 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
-//static const auto io_sync_off = []() {
+// static const auto io_sync_off = []() {
 //  // turn off sync
 //  std::ios::sync_with_stdio(false);
 //  // untie in/out streams
@@ -63,9 +64,9 @@ class Title1 {
  public:
 
   // 两个游标向后移动，一个遍历，一个将不重复元素向前移动
-  static int RemoveDuplicates(std::vector<int> &nums) {
+  static int RemoveDuplicates(std::vector<int> *nums) {
 
-    int n = nums.size();
+    int n = nums->size();
     if (n <= 1) {
       return n;
     }
@@ -86,7 +87,7 @@ TEST(Title1, test1) {
   std::vector<int> ret = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
   gettimeofday(&start, nullptr);
-  int retTitle1 = Title1::RemoveDuplicates(ret);
+  int retTitle1 = Title1::RemoveDuplicates(&ret);
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 

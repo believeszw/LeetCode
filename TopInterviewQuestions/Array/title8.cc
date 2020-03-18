@@ -1,10 +1,11 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 // 题号 8 : Move Zeroes
 //
@@ -28,7 +29,7 @@ class Title8 {
 
  public:
 
-  static void MoveZeroesBetter(std::vector<int> &nums) {
+  static void MoveZeroesBetter(std::vector<int> &nums) { // NOLINT
 
     int size = static_cast<int>(nums.size());
     if (size <= 0) {
@@ -47,7 +48,7 @@ class Title8 {
     }
   }
 
-  static void MoveZeroes(std::vector<int> &nums) {
+  static void MoveZeroes(std::vector<int> &nums) { // NOLINT
 
     int size = static_cast<int>(nums.size());
     if (size <= 0) {

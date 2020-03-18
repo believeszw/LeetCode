@@ -1,11 +1,12 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
 #include <algorithm>
+#include "util.h" // NOLINT
 
 // 题号 5 : Single Number
 //
@@ -33,17 +34,19 @@ class Title5 {
  public:
 
   // 先从小到大排序，去掉尾巴进行比较，单个的总是出现在两个数字中的前一个
-  static int SingleNumber(std::vector<int> &nums) {
+  static int SingleNumber(std::vector<int> &nums) { // NOLINT
     int size = nums.size();
     if (size == 1) return nums[0];
 
     std::sort(nums.begin(), nums.end());
-    for (int i = 1; i < size - 1; i = i + 2) if (nums[i - 1] != nums[i]) return nums[i - 1];
+    for (int i = 1; i < size - 1; i = i + 2)
+      if (nums[i - 1] != nums[i])
+        return nums[i - 1];
     return nums[size - 1];
   }
 
   // 利用异或最终结果就是单独的元素
-  static int SingleNumberBetter(std::vector<int> &nums) {
+  static int SingleNumberBetter(const std::vector<int> &nums) {
     int tmp = 0;
     int size = nums.size();
     for (int i = 0; i < size; ++i) {

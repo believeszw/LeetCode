@@ -1,13 +1,11 @@
 //
 // Created by PC-Saw on 2018/12/25.
+// Copyright (c) 2020 believe. All rights reserved.
 //
-
-#ifndef UNTITLED_TITLE1_H
-#define UNTITLED_TITLE1_H
 
 #include <vector>
 #include <unordered_map>
-#include "util.h"
+#include "util.h" // NOLINT
 
 // 题号 1 : Two Sum
 //
@@ -29,7 +27,7 @@ return [0, 1].
 class Title1 {
 
  public:
-  static std::vector<int> TwoSum(std::vector<int> &nums, int target) {
+  static std::vector<int> TwoSum(const std::vector<int> &nums, int target) {
     // 哈希表和map在这个数量级下性能差异不明显
     std::unordered_map<int, int> unordered_map;
     int size = nums.size();
@@ -59,5 +57,3 @@ TEST(Title, test) {
   EXPECT_EQ(1, ret[1]);
 
 }
-
-#endif //UNTITLED_TITLE1_H

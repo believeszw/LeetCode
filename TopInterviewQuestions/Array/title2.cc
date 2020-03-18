@@ -1,10 +1,11 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
 // 题号 2 : Best Time to Buy and Sell Stock II
@@ -45,7 +46,7 @@ class Title2 {
 
  public:
 
-  static int MaxProfit(std::vector<int> &prices) {
+  static int MaxProfit(const std::vector<int> &prices) {
 
     // 判断是否为空
     int n = prices.size();
@@ -60,7 +61,7 @@ class Title2 {
       // 持续增长
       if (prices[i] >= right) {
         right = prices[i];
-      } else { // 出现下降
+      } else {  // 出现下降
         profit = profit + right - left;
         left = right = prices[i];
       }
@@ -72,7 +73,7 @@ class Title2 {
   }
 
   // 更优解
-  static int MaxProfitBetter(std::vector<int> &prices) {
+  static int MaxProfitBetter(const std::vector<int> &prices) {
     // 判断是否为空
     int n = prices.size();
     if (n == 0) return 0;

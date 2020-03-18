@@ -1,10 +1,11 @@
 //
 // Created by believe on 2020/3/11.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
 // 题号 1 : Reverse String
@@ -31,19 +32,19 @@ Output: ["h","a","n","n","a","H"]
 class Title1 {
 
  public:
-  static void ReverseString(std::vector<char> &s) {
+  static void ReverseString(std::vector<char> &s) { // NOLINT
     int length = s.size();
     for (int kI = 0; kI < length / 2; ++kI) {
       s[kI] = std::exchange(s[length - 1 - kI], s[kI]);
     }
   }
-  static void ReverseString2(std::vector<char> &s) {
+  static void ReverseString2(std::vector<char> &s) { // NOLINT
     int length = s.size();
     for (int kI = 0; kI < length / 2; ++kI) {
       std::swap(s[kI], s[length - 1 - kI]);
     }
   }
-  static void ReverseString3(std::vector<char> &s) {
+  static void ReverseString3(std::vector<char> &s) { // NOLINT
     int i = 0, j = s.size() - 1;
 
     while (i < j) {

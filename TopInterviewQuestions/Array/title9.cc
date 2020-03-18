@@ -1,11 +1,12 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
 #include <unordered_map>
-#include "util.h"
+#include "util.h" // NOLINT
 
 // 题号 9 : Two Sum
 //
@@ -27,7 +28,7 @@ return [0, 1].
 class Title9 {
 
  public:
-  static std::vector<int> TwoSum(std::vector<int> &nums, int target) {
+  static std::vector<int> TwoSum(const std::vector<int> &nums, int target) {
     // 哈希表和map在这个数量级下性能差异不明显
     std::unordered_map<int, int> unordered_map;
     int size = nums.size();

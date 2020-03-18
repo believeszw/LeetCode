@@ -1,12 +1,13 @@
 //
 // Created by PC-Saw on 2019/09/23.
+// Copyright (c) 2020 believe. All rights reserved.
 //
 
 
 #include <iostream>
 #include <unordered_map>
 #include <algorithm>
-#include "util.h"
+#include "util.h" // NOLINT
 
 
 // 题号 6 : Intersection of Two Arrays II
@@ -42,7 +43,7 @@ class Title6 {
 
  public:
 
-  static std::vector<int> IntersectBetter(std::vector<int> &nums1, std::vector<int> &nums2) {
+  static std::vector<int> IntersectBetter(std::vector<int> &nums1, std::vector<int> &nums2) { // NOLINT
 
     int size1 = nums1.size();
     int size2 = nums2.size();
@@ -64,7 +65,7 @@ class Title6 {
         if (nums1[i] < nums2[j]) {
           ++i;
         } else if (nums1[i] == nums2[j]) {
-          ret.insert(ret.end(),nums1[i++]);
+          ret.insert(ret.end(), nums1[i++]);
           ++j;
         } else {
           ++j;
@@ -78,7 +79,7 @@ class Title6 {
     return ret;
   }
 
-  static std::vector<int> Intersect(std::vector<int> &nums1, std::vector<int> &nums2) {
+  static std::vector<int> Intersect(std::vector<int> &nums1, std::vector<int> &nums2) { // NOLINT
     std::unordered_map<int, int> hashMap;
     std::vector<int> result;
     for (int num1 : nums1) {
