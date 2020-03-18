@@ -34,11 +34,12 @@ endif()
 # Double-free, invalid free
 # Memory leaks (experimental)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -fno-omit-frame-pointer -fno-optimize-sibling-calls \
--fsanitize=undefined -fPIE -pie") # -fsanitize=memory -fsanitize-memory-track-origins -pie
+-fsanitize=undefined -fPIE") # -pie # -S .o 文件显示汇编
 
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread") # 检查数据竞争
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=memory") # access uninited
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=leak") # address 已包含，可单独开启
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=memory -fsanitize-memory-track-origins") # access uninited
 
 # -fno-optimize-sibling-calls 尾递归消除
 # -fno-omit-frame-pointer : 保留函数调用的帧信息，以便分析函数调用关系
@@ -48,8 +49,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 # --coverage 用于统计测试覆盖率
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 
-#set(CMAKE_CXX_FLAGS_DEBUG   "-O0" )             # 调试包不优化
-#set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG " )   # release包优化
+#set(CMAKE_CXX_FLAGS_DEBUG "-O0" ) # 调试包不优化
+#set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG " ) # release包优化
 
 add_subdirectory(AllQuestions)
 add_subdirectory(ByteDance)
