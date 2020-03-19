@@ -104,7 +104,7 @@ TEST(Title3, test) {
   gettimeofday(&start, nullptr);
   ret = Title3::CheckInclusion2(str3_1, str3_2);
   gettimeofday(&end, nullptr);
-  std::cout << "CheckInclusion cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "CheckInclusion2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ(false, ret);
 
