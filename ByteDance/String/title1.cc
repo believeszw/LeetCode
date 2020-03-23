@@ -58,21 +58,21 @@ class Title1 {
   }
 
   // LeetCode 上采用映射的一种思路
-  static int LengthOfLongestSubstring2(std::string s) {
+  static int LengthOfLongestSubstring2(std::string str) {
 
     int mp[256];
     for (int &i : mp) i = -1;
-    int max = 0, len = 0, j = -2, size = s.size();
+    int max = 0, len = 0, j = -2, size = str.size();
     for (int i = 0; i < size; i++) {
-      if (mp[(int) s[i]] == -1 || mp[(int) s[i]] <= j) {
-        mp[(int) s[i]] = i;
+      if (mp[str[i] - '0'] == -1 || mp[str[i] - '0'] <= j) {
+        mp[str[i] - '0'] = i;
         len++;
         if (len > max) max = len;
       } else {
 
-        len = i - mp[(int) s[i]];
-        j = mp[(int) s[i]];
-        mp[(int) s[i]] = i;
+        len = i - mp[str[i] - '0'];
+        j = mp[str[i] - '0'];
+        mp[str[i] - '0'] = i;
       }
     }
     return max;

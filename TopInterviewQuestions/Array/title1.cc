@@ -65,7 +65,8 @@ class Title1 {
 
   // 两个游标向后移动，一个遍历，一个将不重复元素向前移动
   static int RemoveDuplicates(std::vector<int> *nums) {
-
+    if (nums == nullptr)
+      return 0;
     int n = nums->size();
     if (n <= 1) {
       return n;
@@ -73,8 +74,8 @@ class Title1 {
 
     int count = 1;
     for (int i = 1; i < n; ++i) {
-      if (nums[i - 1] != nums[i]) {
-        nums[count++] = nums[i];
+      if (nums->at(i - 1) != nums->at(i)) {
+        nums->at(count++) = nums->at(i);
       }
     }
     return count;
@@ -98,5 +99,4 @@ TEST(Title1, test1) {
     if (i != retTitle1 - 1) std::cout << ", ";
   }
   std::cout << "]";
-
 }

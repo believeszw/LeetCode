@@ -127,5 +127,4 @@ TEST(Title6, test6) {
 //      std::cout << ",";
 //    std::cout << ret[i];
 //  }
-
 }

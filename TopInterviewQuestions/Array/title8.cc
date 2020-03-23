@@ -93,5 +93,4 @@ TEST(Title8, test8) {
   EXPECT_EQ(0, vector8[4]);
   EXPECT_EQ(0, vector8[5]);
   EXPECT_EQ(0, vector8[6]);
-
 }

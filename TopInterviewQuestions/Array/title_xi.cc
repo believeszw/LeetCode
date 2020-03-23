@@ -127,5 +127,4 @@ TEST(TitleXI, testXI) {
   EXPECT_EQ(7, matrix2[3][1]);
   EXPECT_EQ(10, matrix2[3][2]);
   EXPECT_EQ(11, matrix2[3][3]);
-
 }

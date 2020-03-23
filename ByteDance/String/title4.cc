@@ -11,15 +11,15 @@
 /*
 示例 1:
 
-输入: num1 = "2", num2 = "3"
-输出: "6"
+输入 : num1 = "2", num2 = "3"
+输出 : "6"
 
 示例 2:
 
-输入: num1 = "123", num2 = "456"
-输出: "56088"
+输入 : num1 = "123", num2 = "456"
+输出 : "56088"
 
- 说明：
+说明 ：
 num1 和 num2 的长度小于110。
 num1 和 num2 只包含数字 0-9。
 num1 和 num2 均不以零开头，除非是数字 0 本身。
@@ -60,6 +60,30 @@ class Title4 {
       ret_str += (vector[pos] + '0');
     }
     return ret_str;
+  }
+
+  static std::string Multiply2(std::string num1, std::string num2) {
+    int len1 = num1.size(), len2 = num2.size();
+
+    //前两个判断排除空串且保证后两个判断的下标访问不越界(短路特性)
+    //后两个判断排除乘数为0的情况(num1 和 num2 均不以零开头，除非是数字 0 本身)
+    if (len1 == 0 || len2 == 0 || num1[0] == '0' || num2[0] == '0') return "0";
+    int product;
+    std::string res(len1 + len2, '0');
+    for (int i = len1 - 1; i >= 0; i--) {
+      for (int j = len2 - 1; j >= 0; j--) {
+        product = (num1[i] - '0') * (num2[j] - '0') + (res[i + j + 1] - '0');
+        res[i + j] += product / 10;
+        //当前位是重写，不是+=！
+        //res[i+j+1]+=product%10;
+        res[i + j + 1] = product % 10 + '0';
+      }
+    }
+    //不用循环排除高位的'0'，因为若乘数中没有0，则只有最高位可能是'0'
+    // for(int i=0;i<len1+len2;i++)
+    //     if(res[i]!='0') return res.substr(i);
+    // return "0";
+    return res[0] == '0' ? res.substr(1) : res;
   }
 };
 
@@ -104,6 +128,13 @@ TEST(Title4, test) {
   ret = Title4::Multiply(str4_1, str4_2);
   gettimeofday(&end, nullptr);
   std::cout << "Multiply cost time : " << diff(start, end) << " us." << std::endl;
+
+  EXPECT_EQ("121932631112635269", ret);
+
+  gettimeofday(&start, nullptr);
+  ret = Title4::Multiply2(str4_1, str4_2);
+  gettimeofday(&end, nullptr);
+  std::cout << "Multiply2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ("121932631112635269", ret);
 }

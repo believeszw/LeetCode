@@ -57,5 +57,4 @@ TEST(Title9, test9) {
 
   EXPECT_EQ(0, ret[0]);
   EXPECT_EQ(1, ret[1]);
-
 }

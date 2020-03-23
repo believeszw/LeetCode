@@ -62,7 +62,7 @@ class Title3 {
       }
 
       // 起始位置与移动后位置元素互换
-      nums[(cur + k) % n] = std::exchange(nums[start], nums[(cur + k) % n]);
+      nums->at((cur + k) % n) = std::exchange(nums->at(start), nums->at((cur + k) % n));
 
       // 当前位置记录被换元素需要移动到的位置
       cur = (cur + k) % n;
@@ -126,5 +126,4 @@ TEST(Title3, test3) {
 //    if (kI != vector3.size() - 1) std::cout << ", ";
 //  }
 //  std::cout << "]";
-
 }

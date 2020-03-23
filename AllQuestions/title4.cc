@@ -116,5 +116,4 @@ nums2 = [2]
     int m = nums1.size(), n = nums2.size();
     return (FindKth(nums1, nums2, (m + n + 1) / 2) + FindKth(nums1, nums2, (m + n + 2) / 2)) / 2.0;
   }
-
 };

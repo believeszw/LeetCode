@@ -17,10 +17,10 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 if (CMAKE_BUILD_TYPE STREQUAL Debug)
     MESSAGE("This is Debug")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0") # 调试包不优化
 elseif(CMAKE_BUILD_TYPE STREQUAL Release)
     MESSAGE("This is Release")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2") # release包优化
 endif()
 
 # -g 调试信息
@@ -37,7 +37,7 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -Wextra -fno-omit-frame-pointer -fno-optimize-sibling-calls \
 -fsanitize=undefined -fPIE") # -pie # -S .o 文件显示汇编
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread") # 检查数据竞争
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=leak") # address 已包含，可单独开启
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=memory -fsanitize-memory-track-origins") # access uninited
@@ -49,9 +49,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -Wextra -fno-omit-frame
 
 # --coverage 用于统计测试覆盖率
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
-
-#set(CMAKE_CXX_FLAGS_DEBUG "-O0" ) # 调试包不优化
-#set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG " ) # release包优化
 
 add_subdirectory(AllQuestions)
 add_subdirectory(ByteDance)

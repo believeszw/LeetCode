@@ -91,5 +91,4 @@ TEST(Title7, test7) {
   gettimeofday(&end, nullptr);
   std::cout << "PlusOneBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(9, ret[3]);
-
 }

@@ -261,5 +261,4 @@ TEST(TitleX, testX) {
   std::cout << "IsValidSudoku3 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_FALSE(ret);
-
 }

@@ -81,5 +81,4 @@ TEST(Title5, test5) {
   gettimeofday(&end, nullptr);
   std::cout << "SingleNumberBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(4, ret);
-
 }

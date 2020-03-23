@@ -112,5 +112,4 @@ TEST(Title2, test2) {
   gettimeofday(&end, nullptr);
   std::cout << "MaxProfitBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(7, ret);
-
 }
