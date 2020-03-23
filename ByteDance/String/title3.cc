@@ -45,14 +45,14 @@ class Title3 {
     std::string str1_son(str1);
     unsigned int size = str2.size();
     for (unsigned int kI = 0; kI < size; ++kI) {
-      int index = str1_son.find(str2[kI]);
+      auto index = str1_son.find(str2[kI]);
       unsigned int len = str1.size() - str1_son.size();
 
       if (index != std::string::npos) {
         str1_son.erase(index, 1);
       } else {
         std::string str2_son(str2, kI - len, len);
-        int index_tmp = str2_son.find(str2[kI]);
+        auto index_tmp = str2_son.find(str2[kI]);
 
         if (index_tmp != std::string::npos) {
           str1_son += str2_son.substr(0, index_tmp);
