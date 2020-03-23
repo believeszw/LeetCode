@@ -26,6 +26,7 @@ endif()
 # -g 调试信息
 # -Wall 开启所有警告
 # -Werror 警告视为错误
+# -Wextra 打印一些额外的警告信息
 # -fsanitize=address
 # Out-of-bounds accesses to heap, stack and globals
 # Use-after-free
@@ -33,7 +34,7 @@ endif()
 # Use-after-scope (clang flag -fsanitize-address-use-after-scope)
 # Double-free, invalid free
 # Memory leaks (experimental)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -fno-omit-frame-pointer -fno-optimize-sibling-calls \
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -Wextra -fno-omit-frame-pointer -fno-optimize-sibling-calls \
 -fsanitize=undefined -fPIE") # -pie # -S .o 文件显示汇编
 
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
