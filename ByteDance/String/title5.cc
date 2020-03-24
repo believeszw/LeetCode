@@ -50,12 +50,7 @@ class Title5 {
 
     for (uint64_t kI = 0; kI < size; ++kI) {
       if (str[kI] == ' ') {
-        if (kI + 1 >= size)
-          return GetStrFromVector(vector);
-        while (str[++kI] == ' ') {
-          if (kI + 1 >= size)
-            return GetStrFromVector(vector);
-        }
+        continue;
       }
 
       while (str[++kI] != ' ' && ++len) {
