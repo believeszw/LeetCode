@@ -49,9 +49,8 @@ class Title5 {
     std::string ret_str;
 
     for (uint64_t kI = 0; kI < size; ++kI) {
-      if (str[kI] == ' ') {
+      if (str[kI] == ' ')
         continue;
-      }
 
       while (str[++kI] != ' ' && ++len) {
         if (kI + 1 == size) {
@@ -65,7 +64,6 @@ class Title5 {
 
     return GetStrFromVector(vector);
   }
-
   static std::string GetStrFromVector(const std::vector<std::string> &vector) {
     std::string ret_str;
     auto vector_size = vector.size();
@@ -77,6 +75,52 @@ class Title5 {
     return ret_str;
   }
 
+  static char *ReverseWords2(char *str) {
+    DelSpace(str);
+    int len = strlen(str);
+    Reverse(str, len - 1);
+    int last = -1;
+    for (int kI = 0; kI < len + 1; ++kI) {
+      if (str[kI] == ' ' || str[kI] == '\0') {
+        Reverse(str + last + 1, kI - last - 2);
+        last = kI;
+      }
+    }
+
+    return str;
+  }
+  static void Reverse(char *str, int len) {
+    int left = 0;
+    while (left < len) {
+      str[len] = std::exchange(str[left], str[len]);
+      ++left;
+      --len;
+    }
+  }
+  static void DelSpace(char *str) {
+    int point_slow = 0, point_fast = 0;
+    bool flag = false;
+    // 去空格
+    while (str[point_fast] != '\0') {
+      if (str[point_fast] != ' ') {
+        str[point_slow++] = str[point_fast++];
+        flag = true;
+      } else {
+        if (flag) {
+          str[point_slow++] = str[point_fast++];
+          flag = false;
+          continue;
+        }
+        point_fast++;
+      }
+    }
+
+    if (point_slow >= 1 && str[point_slow - 1] == ' ') {
+      str[point_slow - 1] = '\0';
+    } else {
+      str[point_slow] = '\0';
+    }
+  }
 };
 
 TEST(Title5, test) {
@@ -117,6 +161,41 @@ TEST(Title5, test) {
   ret = Title5::ReverseWords(str5_1);
   gettimeofday(&end, nullptr);
   std::cout << "ReverseWords cost time : " << diff(start, end) << " us." << std::endl;
+
+  EXPECT_EQ(str5_2, ret);
+}
+
+TEST(Title5, test2) {
+  std::string str5_1 = "abc";
+  std::string str5_2 = "abc";
+
+  struct timeval start{}, end{};
+  char *ret = nullptr;
+
+  gettimeofday(&start, nullptr);
+  ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
+  gettimeofday(&end, nullptr);
+  std::cout << "ReverseWords2 cost time : " << diff(start, end) << " us." << std::endl;
+
+  EXPECT_EQ(str5_2, ret);
+
+  str5_1 = "the sky is blue";
+  str5_2 = "blue is sky the";
+
+  gettimeofday(&start, nullptr);
+  ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
+  gettimeofday(&end, nullptr);
+  std::cout << "ReverseWords2 cost time : " << diff(start, end) << " us." << std::endl;
+
+  EXPECT_EQ(str5_2, ret);
+
+  str5_1 = "  hello world!  ";
+  str5_2 = "world! hello";
+
+  gettimeofday(&start, nullptr);
+  ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
+  gettimeofday(&end, nullptr);
+  std::cout << "ReverseWords2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ(str5_2, ret);
 }
