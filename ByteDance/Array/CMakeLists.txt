@@ -2,7 +2,7 @@ project(Array)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin/${COMPILE_PLAT})
 
-SET(SRC main.cc title1.cc)
+SET(SRC main.cc title1.cc title2.cc)
 
 SET(TEST_LIB gtest gtest_main -lpthread)
 

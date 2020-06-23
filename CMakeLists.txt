@@ -3,6 +3,7 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 14)
 
+if(0)
 # googletest
 set(GOOGLETEST_VERSION 1.10.0)
 add_subdirectory(
@@ -12,6 +13,7 @@ include_directories(
         googletest/googletest/include
 )
 # end
+endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
@@ -74,7 +76,7 @@ MESSAGE(STATUS "operation system is ${CMAKE_SYSTEM}")
 #    MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
 #ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 
-if (0)
+if (1)
 # GoogleTest begin
 # Download and unpack googletest at configure time
 configure_file(ImportGtest.cmake googletest-download/CMakeLists.txt)

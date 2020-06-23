@@ -65,7 +65,7 @@ class Title6 {
         if (nums1[i] < nums2[j]) {
           ++i;
         } else if (nums1[i] == nums2[j]) {
-          ret.insert(ret.end(), nums1[i++]);
+          ret.push_back(nums1[i]);
           ++j;
         } else {
           ++j;
