@@ -3,7 +3,7 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 14)
 
-if(0)
+if(1)
 # googletest
 set(GOOGLETEST_VERSION 1.10.0)
 add_subdirectory(
@@ -52,6 +52,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 # --coverage 用于统计测试覆盖率
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 
+add_subdirectory(Algorithm)
 add_subdirectory(AllQuestions)
 add_subdirectory(ByteDance)
 add_subdirectory(TopInterviewQuestions)
@@ -76,7 +77,7 @@ MESSAGE(STATUS "operation system is ${CMAKE_SYSTEM}")
 #    MESSAGE(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")
 #ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
 
-if (1)
+if (0)
 # GoogleTest begin
 # Download and unpack googletest at configure time
 configure_file(ImportGtest.cmake googletest-download/CMakeLists.txt)
