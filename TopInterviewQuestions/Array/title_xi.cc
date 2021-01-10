@@ -8,7 +8,7 @@
 #include "util.h" // NOLINT
 
 
-// 题号 9 : Rotate Image
+// 题号 XI : Rotate Image
 //
 // You are given an n x n 2D matrix representing an image.
 //
