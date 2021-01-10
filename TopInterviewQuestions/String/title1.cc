@@ -29,7 +29,7 @@ Output: ["h","a","n","n","a","H"]
 
  * */
 
-class Title1 {
+class Title3 {
 
  public:
   static void ReverseString(std::vector<char> &s) { // NOLINT
@@ -57,7 +57,7 @@ class Title1 {
   }
 };
 
-TEST(Title1, test) {
+TEST(Title3, test) {
 
   struct timeval start{}, end{};
   std::vector<char> char_vector = {'h', 'e', 'l', 'l', 'o'};
@@ -66,7 +66,7 @@ TEST(Title1, test) {
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 101; ++kI) {
-    Title1::ReverseString(char_vector);
+    Title3::ReverseString(char_vector);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ReverseString cost time : " << diff(start, end) << " us." << std::endl;
@@ -79,7 +79,7 @@ TEST(Title1, test) {
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 101; ++kI) {
-    Title1::ReverseString2(char_vector2);
+    Title3::ReverseString2(char_vector2);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ReverseString2 cost time : " << diff(start, end) << " us." << std::endl;
@@ -92,7 +92,7 @@ TEST(Title1, test) {
 
   gettimeofday(&start, nullptr);
   for (int kI = 0; kI < 101; ++kI) {
-    Title1::ReverseString3(char_vector3);
+    Title3::ReverseString3(char_vector3);
   }
   gettimeofday(&end, nullptr);
   std::cout << "ReverseString3 cost time : " << diff(start, end) << " us." << std::endl;

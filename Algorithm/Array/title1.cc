@@ -1,6 +1,6 @@
 //
 // Created by PC-Saw on 2021/01/06.
-// Copyright (c) 2020 believe. All rights reserved.
+// Copyright (c) 2021 believe. All rights reserved.
 //
 
 
@@ -38,7 +38,7 @@ class Title1 {
 
  public:
 
-  static void moveZeroes(std::vector<int>& nums) {
+  static void moveZeroes(std::vector<int> &nums) {
     int size = nums.size();
     if (size == 0) return;
     int index = 0;
@@ -63,7 +63,7 @@ TEST(AlgTitle1, test1) {
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 
-  std::vector<int> exp_ret = {1,3,12,0,0};
+  std::vector<int> exp_ret = {1, 3, 12, 0, 0};
 
-  EXPECT_TRUE(exp_ret==ret);
+  EXPECT_TRUE(exp_ret == ret);
 }

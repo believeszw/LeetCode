@@ -27,7 +27,7 @@
 
  * */
 
-class Title1 {
+class Title3 {
  public:
 
   static std::vector<std::vector<int>> ThreeSum(std::vector<int> &nums) { // NOLINT
@@ -58,7 +58,7 @@ class Title1 {
   }
 };
 
-TEST(Title1, test) {
+TEST(Title3, test) {
 
   struct timeval start{}, end{};
   std::vector<int> vector1_1{-1, 0, 1, 2, -1, -4};
@@ -67,7 +67,7 @@ TEST(Title1, test) {
   std::vector<int> vector1_3{-1, 0, 1};
 
   gettimeofday(&start, nullptr);
-  ret = Title1::ThreeSum(vector1_1);
+  ret = Title3::ThreeSum(vector1_1);
   gettimeofday(&end, nullptr);
   std::cout << "ThreeSum cost time : " << diff(start, end) << " us." << std::endl;
 

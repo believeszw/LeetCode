@@ -59,7 +59,7 @@ for (int i = 0; i < len; i++) {
 
  * */
 
-class Title1 {
+class Title3 {
 
  public:
 
@@ -82,13 +82,13 @@ class Title1 {
   }
 };
 
-TEST(Title1, test1) {
+TEST(Title3, test1) {
 
   struct timeval start{}, end{};
   std::vector<int> ret = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
 
   gettimeofday(&start, nullptr);
-  int retTitle1 = Title1::RemoveDuplicates(&ret);
+  int retTitle1 = Title3::RemoveDuplicates(&ret);
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 

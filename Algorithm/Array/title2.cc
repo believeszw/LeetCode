@@ -1,6 +1,6 @@
 //
 // Created by PC-Saw on 2021/01/06.
-// Copyright (c) 2020 believe. All rights reserved.
+// Copyright (c) 2021 believe. All rights reserved.
 //
 
 
@@ -63,15 +63,14 @@ for (int i = 0; i < len; i++) {
 
  * */
 
-class Title1 {
+class Title2 {
 
  public:
 
-  static int RemoveElement(std::vector<int>& nums, int val) {
+  static int RemoveElement(std::vector<int> &nums, int val) {
     int size = nums.size();
     if (size < 1) return 0;
-    int index = 0;
-    int ret = 0;
+    int index = 0, ret = 0;
 
     for (int kI = 0; kI < size; ++kI) {
       if (nums[kI] != val) {
@@ -86,34 +85,33 @@ class Title1 {
 TEST(AlgTitle2, test1) {
 
   struct timeval start{}, end{};
-  std::vector<int> ret = {3,2,2,3};
+  std::vector<int> ret = {3, 2, 2, 3};
 
   gettimeofday(&start, nullptr);
-  int ret_value = Title1::RemoveElement(ret, 3);
+  int ret_value = Title2::RemoveElement(ret, 3);
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ(ret_value, 2);
   for (int kI = 0; kI < ret_value; ++kI) {
     std::cout << ret[kI];
-    if (kI != ret_value-1)
+    if (kI != ret_value - 1)
       std::cout << ", ";
   }
   std::cout << std::endl;
 
-  std::vector<int> ret2 = {0,1,2,2,3,0,4,2};
+  std::vector<int> ret2 = {0, 1, 2, 2, 3, 0, 4, 2};
 
   gettimeofday(&start, nullptr);
-  int ret_value2 = Title1::RemoveElement(ret2, 2);
+  int ret_value2 = Title2::RemoveElement(ret2, 2);
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ(ret_value2, 5);
   for (int kI = 0; kI < ret_value2; ++kI) {
     std::cout << ret2[kI];
-    if (kI != ret_value2-1)
+    if (kI != ret_value2 - 1)
       std::cout << ", ";
   }
-
 
 }

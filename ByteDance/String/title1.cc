@@ -35,7 +35,7 @@
 
  * */
 
-class Title1 {
+class Title3 {
 
  public:
   static int LengthOfLongestSubstring(std::string str) {
@@ -79,7 +79,7 @@ class Title1 {
   }
 };
 
-TEST(Title1, test) {
+TEST(Title3, test) {
 
   struct timeval start{}, end{};
   std::string str1_1 = "abcabcbb";
@@ -88,21 +88,21 @@ TEST(Title1, test) {
   int ret = -1;
 
   gettimeofday(&start, nullptr);
-  ret = Title1::LengthOfLongestSubstring(str1_1);
+  ret = Title3::LengthOfLongestSubstring(str1_1);
   gettimeofday(&end, nullptr);
   std::cout << "LengthOfLongestSubstring cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ(3, ret);
 
   gettimeofday(&start, nullptr);
-  ret = Title1::LengthOfLongestSubstring2(str1_2);
+  ret = Title3::LengthOfLongestSubstring2(str1_2);
   gettimeofday(&end, nullptr);
   std::cout << "LengthOfLongestSubstring2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ(1, ret);
 
   gettimeofday(&start, nullptr);
-  ret = Title1::LengthOfLongestSubstring(str1_1);
+  ret = Title3::LengthOfLongestSubstring(str1_1);
   gettimeofday(&end, nullptr);
   std::cout << "LengthOfLongestSubstring cost time : " << diff(start, end) << " us." << std::endl;
 

@@ -24,7 +24,7 @@ return [0, 1].
 
  * */
 
-class Title1 {
+class Title3 {
 
  public:
   static std::vector<int> TwoSum(const std::vector<int> &nums, int target) {
@@ -49,7 +49,7 @@ TEST(Title, test) {
   struct timeval start{}, end{};
 
   gettimeofday(&start, nullptr);
-  ret = Title1::TwoSum(vector, 9);
+  ret = Title3::TwoSum(vector, 9);
   gettimeofday(&end, nullptr);
   std::cout << "TwoSum cost time : " << diff(start, end) << " us." << std::endl;
 
