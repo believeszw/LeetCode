@@ -81,7 +81,7 @@ class TitleX {
 
 };
 
-TEST(AlgTitleX, test1) {
+TEST(AlgArrayTitleX, test1) {
 
   struct timeval start{}, end{};
   std::string str = "leetcode";

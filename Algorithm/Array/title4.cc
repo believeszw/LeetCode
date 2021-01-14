@@ -80,7 +80,7 @@ class Title4 {
   }
 };
 
-TEST(AlgTitle4, test1) {
+TEST(AlgArrayTitle4, test1) {
 
   struct timeval start{}, end{};
   std::vector<int> ret = {1, 1, 1, 2, 2, 3};

@@ -71,7 +71,7 @@ class TitleXI {
   }
 };
 
-TEST(AlgTitleXI, test1) {
+TEST(AlgArrayTitleXI, test1) {
 
   struct timeval start{}, end{};
   std::vector<int> vec = {1, 8, 6, 2, 5, 4, 8, 3, 7};

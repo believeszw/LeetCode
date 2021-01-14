@@ -61,7 +61,7 @@ class Title9 {
   }
 };
 
-TEST(AlgTitle9, test1) {
+TEST(AlgArrayTitle9, test1) {
 
   struct timeval start{}, end{};
   std::string str = "A man, a plan, a canal: Panama";

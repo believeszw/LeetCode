@@ -56,16 +56,31 @@ class TitleXII {
 
   // todo O(nlogn)
   static int MinSubArrayLen2(int s, std::vector<int> &nums) {
-    int size = nums.size();
-    int min = size, sum = 0, left = 0;
-    (void) s;
-    (void) sum;
-    (void) left;
-    return min;
+    int n = nums.size();
+    if (n == 0) {
+      return 0;
+    }
+    int ans = INT_MAX;
+    std::vector<int> sums(n + 1, 0);
+    // 为了方便计算，令 size = n + 1
+    // sums[0] = 0 意味着前 0 个元素的前缀和为 0
+    // sums[1] = A[0] 前 1 个元素的前缀和为 A[0]
+    // 以此类推
+    for (int i = 1; i <= n; i++) {
+      sums[i] = sums[i - 1] + nums[i - 1];
+    }
+    for (int i = 1; i <= n; i++) {
+      int target = s + sums[i - 1];
+      auto bound = lower_bound(sums.begin(), sums.end(), target);
+      if (bound != sums.end()) {
+        ans = std::min(ans, static_cast<int>((bound - sums.begin()) - (i - 1)));
+      }
+    }
+    return ans == INT_MAX ? 0 : ans;
   }
 };
 
-TEST(AlgTitleXII, test1) {
+TEST(AlgArrayTitleXII, test1) {
 
   struct timeval start{}, end{};
   std::vector<int> ret = {2, 3, 1, 2, 4, 3};
@@ -77,4 +92,12 @@ TEST(AlgTitleXII, test1) {
 
   EXPECT_EQ(ret_value, 2);
 
+  std::vector<int> ret2 = {2, 3, 1, 2, 4, 3};
+
+  gettimeofday(&start, nullptr);
+  int ret_value2 = TitleXII::MinSubArrayLen2(7, ret);
+  gettimeofday(&end, nullptr);
+  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+
+  EXPECT_EQ(ret_value2, 2);
 }
