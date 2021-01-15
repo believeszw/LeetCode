@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
 #include <iostream>
 #include "util.h" // NOLINT
-
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -51,10 +49,8 @@ nums 的长度范围为 [0, 10000]。
  * */
 
 class Title1 {
-
  public:
-
-  static int PivotIndex(std::vector<int>& nums) {
+  static int PivotIndex(std::vector<int> &nums) {
     int size = nums.size();
     if (size == 0) {
       return -1;
@@ -62,11 +58,10 @@ class Title1 {
     // sum[i] 代表前 i 个元素的和
     std::vector<int> sum(size + 1, 0);
     for (int kI = 1; kI <= size; ++kI) {
-      sum[kI] = sum[kI - 1] + nums[kI-1];
+      sum[kI] = sum[kI - 1] + nums[kI - 1];
     }
-
     for (int kI = 0; kI < size; ++kI) {
-      if (sum[kI] == sum[size] - sum[kI+1]) {
+      if (sum[kI] == sum[size] - sum[kI + 1]) {
         return kI;
       }
     }
@@ -77,7 +72,7 @@ class Title1 {
 TEST(AlgStrTitle1, test1) {
 
   struct timeval start{}, end{};
-  std::vector<int> ret = {-1,-1,0,1,1,0};
+  std::vector<int> ret = {-1, -1, 0, 1, 1, 0};
 
   gettimeofday(&start, nullptr);
   int ret_value = Title1::PivotIndex(ret);
