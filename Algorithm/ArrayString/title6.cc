@@ -29,72 +29,88 @@
 
 输出:  [1,2,4,7,5,3,6,8,9]
 
-解释:
+[
+ [ 1, 2, 3, 4 ],
+ [ 5, 6, 7, 8 ],
+ [ 9, 10,11,12]
+]
+
+说明:
+给定矩阵中的元素总数不会超过 100000 。
 
  * */
 
-class Title5 {
+class Title6 {
  public:
-  static void SetColRowZeros(std::vector<std::vector<int>> &matrix, int row, int col) {
-    int row_size = matrix[col].size();
-    int col_size = matrix.size();
-    for (int kI = 0; kI < row_size; ++kI) { // row
-      matrix[col][kI] = 0;
-    }
-    for (int kI = 0; kI < col_size; ++kI) { // col
-      matrix[kI][row] = 0;
-    }
-  }
+  static std::vector<int> FindDiagonalOrder(std::vector<std::vector<int>> &matrix) {
+    std::vector<int> nums;
+    int m = matrix.size();
+    int n = matrix[0].size();
 
-  static void SetZeroes(std::vector<std::vector<int>> &matrix) {
-    std::vector<std::vector<int>> zero_index;
-    int row_size = matrix[0].size();
-    int col_size = matrix.size();
-    for (int kI = 0; kI < col_size; ++kI) {
-      for (int kJ = 0; kJ < row_size; ++kJ) {
-        if (matrix[kI][kJ] == 0) {
-          zero_index.push_back({kJ, kI});
-        }
+    int i = 0;    // i 是 x + y 的和
+    while (i < m + n) {
+      // 第 1 3 5 ... 趟
+      int x1 = (i < m) ? i : m - 1;    // 确定 x y 的初始值
+      int y1 = i - x1;
+      while (x1 >= 0 && y1 < n) {
+        nums.push_back(matrix[x1][y1]);
+        x1--;
+        y1++;
       }
+      i++;
+
+      if (i >= m + n) break;
+      // 第 2 4 6 ... 趟
+      int y2 = (i < n) ? i : n - 1;    // 确定 x y 的初始值
+      int x2 = i - y2;
+      while (y2 >= 0 && x2 < m) {
+        nums.push_back(matrix[x2][y2]);
+        x2++;
+        y2--;
+      }
+      i++;
     }
-    int size = zero_index.size();
-    for (int kI = 0; kI < size; ++kI) {
-      SetColRowZeros(matrix, zero_index[kI][0], zero_index[kI][1]);
+    return nums;
+  }
+  static std::vector<int> FindDiagonalOrder2(std::vector<std::vector<int>> &matrix) {
+    std::vector<int> nums;
+    int m = matrix.size();
+    if (m == 0) return nums;
+    int n = matrix[0].size();
+    if (n == 0) return nums;
+
+    bool bXFlag = true;
+    for (int i = 0; i < m + n; i++) {
+      int pm = bXFlag ? m : n;
+      int pn = bXFlag ? n : m;
+
+      int x = (i < pm) ? i : pm - 1;
+      int y = i - x;
+
+      while (x >= 0 && y < pn) {
+        nums.push_back(bXFlag ? matrix[x][y] : matrix[y][x]);
+        x--;
+        y++;
+      }
+
+      bXFlag = !bXFlag;
     }
+    return nums;
   }
 };
 
-TEST(AlgStrTitle5, test1) {
+TEST(AlgStrTitle6, test1) {
   struct timeval start{}, end{};
-  std::vector<std::vector<int>> ret = {
-      {1, 1, 1},
-      {1, 0, 1},
-      {1, 1, 1}
+  std::vector<std::vector<int>> matrix = {
+      {1, 2, 3},
+      {4, 5, 6},
+      {7, 8, 9}
   };
-  std::vector<std::vector<int>> expect_ret = {
-      {1, 0, 1},
-      {0, 0, 0},
-      {1, 0, 1}
-  };
+  std::vector<int> expect_ret = {1, 2, 4, 7, 5, 3, 6, 8, 9};
   gettimeofday(&start, nullptr);
-  Title5::SetZeroes(ret);
+  std::vector<int> ret = Title6::FindDiagonalOrder2(matrix);
   gettimeofday(&end, nullptr);
   std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(ret, expect_ret);
 
-  std::vector<std::vector<int>> ret2 = {
-      {0, 1, 2, 0},
-      {3, 4, 5, 2},
-      {1, 3, 1, 5}
-  };
-  std::vector<std::vector<int>> expect_ret2 = {
-      {0, 0, 0, 0},
-      {0, 4, 5, 0},
-      {0, 3, 1, 0}
-  };
-  gettimeofday(&start, nullptr);
-  Title5::SetZeroes(ret2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
-  EXPECT_EQ(ret2, expect_ret2);
 }
