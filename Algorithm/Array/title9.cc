@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -37,8 +35,7 @@
 
 class Title9 {
 
- public:
-
+public:
   static bool IsPalindrome(std::string str) {
     int n = str.size();
     int left = 0, right = n - 1;
@@ -63,13 +60,12 @@ class Title9 {
 
 TEST(AlgArrayTitle9, test1) {
 
-  struct timeval start{}, end{};
   std::string str = "A man, a plan, a canal: Panama";
-
-  gettimeofday(&start, nullptr);
-  bool ret_value = Title9::IsPalindrome(str);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  bool ret_value{false};
+  {
+    ScopedTimer timer("Title9::IsPalindrome");
+    ret_value = Title9::IsPalindrome(str);
+  }
 
   EXPECT_TRUE(ret_value);
 }

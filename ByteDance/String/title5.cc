@@ -3,9 +3,9 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
+#include "util.h" // NOLINT
 #include <iostream>
 #include <stack>
-#include "util.h" // NOLINT
 
 // 给定一个字符串，逐个翻转字符串中的每个单词。
 
@@ -40,7 +40,7 @@
  */
 
 class Title5 {
- public:
+public:
   static std::string ReverseWords(const std::string &str) {
     uint64_t size = str.size();
 
@@ -123,79 +123,65 @@ class Title5 {
   }
 };
 
-TEST(Title5, test) {
-  struct timeval start{}, end{};
+TEST(ByteStrTitle5, test) {
   std::string ret;
   std::string str5_1 = "the sky is blue";
   std::string str5_2 = "blue is sky the";
-
-  gettimeofday(&start, nullptr);
-  ret = Title5::ReverseWords(str5_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseWords cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title5::ReverseWords");
+    ret = Title5::ReverseWords(str5_1);
+  }
   EXPECT_EQ(str5_2, ret);
 
   str5_1 = "  hello world!  ";
   str5_2 = "world! hello";
-
-  gettimeofday(&start, nullptr);
-  ret = Title5::ReverseWords(str5_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseWords cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title5::ReverseWords");
+    ret = Title5::ReverseWords(str5_1);
+  }
   EXPECT_EQ(str5_2, ret);
 
   str5_1 = "a good   example";
   str5_2 = "example good a";
-
-  gettimeofday(&start, nullptr);
-  ret = Title5::ReverseWords(str5_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseWords cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title5::ReverseWords");
+    ret = Title5::ReverseWords(str5_1);
+  }
+  EXPECT_EQ(str5_2, ret);
 
   str5_1 = "   a   ";
   str5_2 = "a";
-
-  gettimeofday(&start, nullptr);
-  ret = Title5::ReverseWords(str5_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseWords cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title5::ReverseWords");
+    ret = Title5::ReverseWords(str5_1);
+  }
   EXPECT_EQ(str5_2, ret);
 }
 
-TEST(Title5, test2) {
+TEST(ByteStrTitle5, test2) {
   std::string str5_1 = "abc";
   std::string str5_2 = "abc";
-
-  struct timeval start{}, end{};
   char *ret = nullptr;
 
-  gettimeofday(&start, nullptr);
-  ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseWords2 cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title5::ReverseWords2");
+    ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
+  }
   EXPECT_EQ(str5_2, ret);
 
   str5_1 = "the sky is blue";
   str5_2 = "blue is sky the";
-
-  gettimeofday(&start, nullptr);
-  ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseWords2 cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title5::ReverseWords2");
+    ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
+  }
   EXPECT_EQ(str5_2, ret);
 
   str5_1 = "  hello world!  ";
   str5_2 = "world! hello";
-
-  gettimeofday(&start, nullptr);
-  ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseWords2 cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title5::ReverseWords2");
+    ret = Title5::ReverseWords2(const_cast<char *>(str5_1.c_str()));
+  }
   EXPECT_EQ(str5_2, ret);
 }

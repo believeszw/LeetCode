@@ -3,18 +3,17 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
-#include <iostream>
-#include <algorithm>
-#include <unordered_set>
 #include "util.h" // NOLINT
-
+#include <algorithm>
+#include <iostream>
+#include <unordered_set>
 
 // 题号 4 : Contains Duplicate
 //
 // Given an array of integers, find if the array contains any duplicates.
 //
-// Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+// Your function should return true if any value appears at least twice in the
+// array, and it should return false if every element is distinct.
 
 /*
 Example 1:
@@ -36,14 +35,16 @@ Output: true
 
 class Title4 {
 
- public:
+public:
   static bool ContainsDuplicate(const std::vector<int> &nums) {
-    return nums.size() > std::unordered_set<int>(nums.begin(), nums.end()).size();
+    return nums.size() >
+           std::unordered_set<int>(nums.begin(), nums.end()).size();
   }
 
   static bool ContainsDuplicateBetter(std::vector<int> &nums) { // NOLINT
     int size = nums.size();
-    if (size <= 1) return false;
+    if (size <= 1)
+      return false;
 
     std::sort(nums.begin(), nums.end());
     for (int i = 1; i < size; ++i)
@@ -54,28 +55,38 @@ class Title4 {
   }
 };
 
-TEST(Title4, test4) {
+TEST(TopArrTitle4, test4) {
 
   std::vector<int> vector4 = {1, 1, 3, 4, 5, 6, 7};
   bool ret = false;
-  struct timeval start{}, end{};
+  struct timeval start {
+  }, end{};
 
   gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 100; ++kI) {
-    ret = Title4::ContainsDuplicate(vector4);
+  {
+    ScopedTimer timer("Title4::ContainsDuplicate");
+    for (int kI = 0; kI < 100; ++kI) {
+      ret = Title4::ContainsDuplicate(vector4);
+    }
   }
+
   gettimeofday(&end, nullptr);
-  std::cout << "ContainsDuplicate       cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "ContainsDuplicate       cost time : " << diff(start, end)
+            << " us." << std::endl;
   EXPECT_TRUE(ret);
 
   ret = false;
   vector4 = {1, 1, 3, 4, 5, 6, 7};
   // ContainsDuplicateBetter
   gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = Title4::ContainsDuplicateBetter(vector4);
+  {
+    ScopedTimer timer("Title4::ContainsDuplicateBetter");
+    for (int kJ = 0; kJ < 100; ++kJ) {
+      ret = Title4::ContainsDuplicateBetter(vector4);
+    }
   }
   gettimeofday(&end, nullptr);
-  std::cout << "ContainsDuplicateBetter cost time : " << diff(start, end) << " us." << std::endl;
+  std::cout << "ContainsDuplicateBetter cost time : " << diff(start, end)
+            << " us." << std::endl;
   EXPECT_TRUE(ret);
 }

@@ -3,15 +3,14 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
-#include <iostream>
-#include <algorithm>
 #include "util.h" // NOLINT
-
+#include <algorithm>
+#include <iostream>
 
 // 题号 3 : Rotate Array
 //
-// Given an array, rotate the array to the right by k steps, where k is non-negative.
+// Given an array, rotate the array to the right by k steps, where k is
+// non-negative.
 
 /*
 Example 1:
@@ -33,21 +32,22 @@ rotate 2 steps to the right: [3,99,-1,-100]
 
 Note:
 
-Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
-Could you do it in-place with O(1) extra space?
+Try to come up as many solutions as you can, there are at least 3 different ways
+to solve this problem. Could you do it in-place with O(1) extra space?
 
  * */
 
 class Title3 {
- public:
-
+public:
   // 较优解
   static void RotateBetter(std::vector<int> *nums, int k) {
 
     int n = nums->size();
 
-    if (n == 0 || k == 0) return;
-    if (k >= n) k = k % n;
+    if (n == 0 || k == 0)
+      return;
+    if (k >= n)
+      k = k % n;
 
     int cur = 0;
     int start = 0;
@@ -62,7 +62,8 @@ class Title3 {
       }
 
       // 起始位置与移动后位置元素互换
-      nums->at((cur + k) % n) = std::exchange(nums->at(start), nums->at((cur + k) % n));
+      nums->at((cur + k) % n) =
+          std::exchange(nums->at(start), nums->at((cur + k) % n));
 
       // 当前位置记录被换元素需要移动到的位置
       cur = (cur + k) % n;
@@ -77,13 +78,11 @@ class Title3 {
     reverse(nums->end() - k, nums->end());
     reverse(nums->begin(), nums->end());
   }
-
 };
 
-TEST(Title3, test3) {
+TEST(TopArrTitle3, test3) {
 
   std::vector<int> vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
-  struct timeval start{}, end{};
 
   Title3::Rotate(&vector3, 3);
   EXPECT_EQ(6, vector3[0]);
@@ -104,26 +103,26 @@ TEST(Title3, test3) {
 
   // 性能测试
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
-  gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 100; ++kJ) {
-    Title3::Rotate(&vector3, 3);
+  {
+    ScopedTimer timer("Title3::Rotate");
+    for (int kJ = 0; kJ < 100; ++kJ) {
+      Title3::Rotate(&vector3, 3);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "Rotate       cost time : " << diff(start, end) << " us." << std::endl;
 
   vector3 = {1, 2, 3, 4, 5, 6, 7, 8};
-  gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 100; ++kJ) {
-    Title3::RotateBetter(&vector3, 3);
+  {
+    ScopedTimer timer("Title3::RotateBetter");
+    for (int kJ = 0; kJ < 100; ++kJ) {
+      Title3::RotateBetter(&vector3, 3);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "RotateBetter cost time : " << diff(start, end) << " us." << std::endl;
 
   // 为了测试性能这里就不打印了，已经乱序了
-//  std::cout << "[";
-//  for (int kI = 0; kI < vector3.size(); ++kI) {
-//    std::cout << vector3[kI];
-//    if (kI != vector3.size() - 1) std::cout << ", ";
-//  }
-//  std::cout << "]";
+  //  std::cout << "[";
+  //  for (int kI = 0; kI < vector3.size(); ++kI) {
+  //    std::cout << vector3[kI];
+  //    if (kI != vector3.size() - 1) std::cout << ", ";
+  //  }
+  //  std::cout << "]";
 }

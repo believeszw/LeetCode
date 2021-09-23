@@ -3,9 +3,8 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // 题号 2 : 最长公共前缀
 //
@@ -34,15 +33,18 @@
 
 class Title2 {
 
- public:
+public:
   static std::string LongestCommonPrefix(std::vector<std::string> &strs) {
-    if (strs.empty()) return "";
+    if (strs.empty())
+      return "";
 
     std::string first = strs[0];
-    if (first.empty()) return "";
+    if (first.empty())
+      return "";
 
     unsigned int size = strs.size(), index = 0;
-    if (size == 1) return first;
+    if (size == 1)
+      return first;
 
     std::string ret;
     bool flag = true;
@@ -68,16 +70,16 @@ class Title2 {
     for (const auto &str : strs) {
       while (str.substr(0, ret.size()) != ret) {
         ret = ret.substr(0, ret.size() - 1);
-        if (ret.empty()) return ret;
+        if (ret.empty())
+          return ret;
       }
     }
     return ret;
   }
 };
 
-TEST(Title2, test) {
+TEST(ByteStrTitle2, test) {
 
-  struct timeval start{}, end{};
   std::string ret;
 
   std::vector<std::string> str2_1;
@@ -89,21 +91,23 @@ TEST(Title2, test) {
   str2_2.insert(str2_2.end(), "dog");
   str2_2.insert(str2_2.end(), "racecar");
   str2_2.insert(str2_2.end(), "car");
-
-  gettimeofday(&start, nullptr);
-  ret = Title2::LongestCommonPrefix(str2_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "LongestCommonPrefix cost time : " << diff(start, end) << " us." << std::endl;
-
-  EXPECT_EQ("fl", ret);
-
-  gettimeofday(&start, nullptr);
-  ret = Title2::LongestCommonPrefix2(str2_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "LongestCommonPrefix2 cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title2::LongestCommonPrefix");
+    ret = Title2::LongestCommonPrefix(str2_1);
+  }
 
   EXPECT_EQ("fl", ret);
 
-  ret = Title2::LongestCommonPrefix2(str2_2);
+  {
+    ScopedTimer timer("Title2::LongestCommonPrefix2");
+    ret = Title2::LongestCommonPrefix2(str2_1);
+  }
+
+  EXPECT_EQ("fl", ret);
+
+  {
+    ScopedTimer timer("Title2::LongestCommonPrefix2");
+    ret = Title2::LongestCommonPrefix2(str2_2);
+  }
   EXPECT_EQ("", ret);
 }

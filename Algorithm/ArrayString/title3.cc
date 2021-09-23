@@ -3,8 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-#include <iostream>
 #include "util.h" // NOLINT
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -37,8 +37,9 @@ intervals[i][0] <= intervals[i][1]
  * */
 
 class Title3 {
- public:
-  static std::vector<std::vector<int>> Merge(std::vector<std::vector<int>> &intervals) {
+public:
+  static std::vector<std::vector<int>>
+  Merge(std::vector<std::vector<int>> &intervals) {
     int size = intervals.size();
     if (size == 0) {
       return {};
@@ -58,20 +59,21 @@ class Title3 {
 };
 
 TEST(AlgStrTitle3, test1) {
-  struct timeval start{}, end{};
   std::vector<std::vector<int>> ret = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
   std::vector<std::vector<int>> expect_ret = {{1, 6}, {8, 10}, {15, 18}};
-  gettimeofday(&start, nullptr);
-  std::vector<std::vector<int>> ret_value = Title3::Merge(ret);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  std::vector<std::vector<int>> ret_value;
+  {
+    ScopedTimer timer("Title3::Merge");
+    ret_value = Title3::Merge(ret);
+  }
   EXPECT_EQ(ret_value, expect_ret);
 
   std::vector<std::vector<int>> ret2 = {{1, 4}, {4, 5}};
   std::vector<std::vector<int>> expect_ret2 = {{1, 5}};
-  gettimeofday(&start, nullptr);
-  std::vector<std::vector<int>> ret_value2 = Title3::Merge(ret2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  std::vector<std::vector<int>> ret_value2;
+  {
+    ScopedTimer timer("Title3::Merge");
+    ret_value2 = Title3::Merge(ret2);
+  }
   EXPECT_EQ(ret_value2, expect_ret2);
 }

@@ -3,12 +3,10 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
+#include "util.h" // NOLINT
+#include <algorithm>
 #include <iostream>
 #include <unordered_map>
-#include <algorithm>
-#include "util.h" // NOLINT
-
 
 // 题号 6 : Intersection of Two Arrays II
 //
@@ -29,21 +27,22 @@ Output: [4,9]
 
 Note:
 
-Each element in the result should appear as many times as it shows in both arrays.
-The result can be in any order.
-Follow up:
+Each element in the result should appear as many times as it shows in both
+arrays. The result can be in any order. Follow up:
 
-What if the given array is already sorted? How would you optimize your algorithm?
-What if nums1's size is small compared to nums2's size? Which algorithm is better?
-What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+What if the given array is already sorted? How would you optimize your
+algorithm? What if nums1's size is small compared to nums2's size? Which
+algorithm is better? What if elements of nums2 are stored on disk, and the
+memory is limited such that you cannot load all elements into the memory at
+once?
 
  * */
 
 class Title6 {
 
- public:
-
-  static std::vector<int> IntersectBetter(std::vector<int> &nums1, std::vector<int> &nums2) { // NOLINT
+public:
+  static std::vector<int> IntersectBetter(std::vector<int> &nums1,
+                                          std::vector<int> &nums2) { // NOLINT
 
     int size1 = nums1.size();
     int size2 = nums2.size();
@@ -79,7 +78,8 @@ class Title6 {
     return ret;
   }
 
-  static std::vector<int> Intersect(std::vector<int> &nums1, std::vector<int> &nums2) { // NOLINT
+  static std::vector<int> Intersect(std::vector<int> &nums1,
+                                    std::vector<int> &nums2) { // NOLINT
     std::unordered_map<int, int> hashMap;
     std::vector<int> result;
     for (int num1 : nums1) {
@@ -95,36 +95,35 @@ class Title6 {
   }
 };
 
-TEST(Title6, test6) {
+TEST(TopArrTitle6, test6) {
 
   std::vector<int> vector6_1 = {1, 2, 3, 1, 3, 4, 2};
   std::vector<int> vector6_2 = {2, 6, 1, 4};
   std::vector<int> ret;
-  struct timeval start{}, end{};
 
-  gettimeofday(&start, nullptr);
-  ret = Title6::IntersectBetter(vector6_1, vector6_2);
-  gettimeofday(&end, nullptr);
-  std::cout << "IntersectBetter cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title6::IntersectBetter");
+    ret = Title6::IntersectBetter(vector6_1, vector6_2);
+  }
   EXPECT_EQ(1, ret[0]);
   EXPECT_EQ(2, ret[1]);
   EXPECT_EQ(4, ret[2]);
 
   // SingleNumberBetter
   ret = {0};
-  gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = Title6::Intersect(vector6_1, vector6_2);
+  {
+    ScopedTimer timer("Title6::Intersect");
+    for (int kJ = 0; kJ < 100; ++kJ) {
+      ret = Title6::Intersect(vector6_1, vector6_2);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "Intersect       cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(1, ret[0]);
   EXPECT_EQ(2, ret[1]);
   EXPECT_EQ(4, ret[2]);
 
-//  for (int i = 0; i < ret.size(); ++i) {
-//    if (i != 0)
-//      std::cout << ",";
-//    std::cout << ret[i];
-//  }
+  //  for (int i = 0; i < ret.size(); ++i) {
+  //    if (i != 0)
+  //      std::cout << ",";
+  //    std::cout << ret[i];
+  //  }
 }

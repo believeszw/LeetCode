@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -18,7 +16,8 @@
 
 // 题号 12 : 长度最小的子数组
 //
-// 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。
+// 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s
+// 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。
 //
 
 /*
@@ -37,8 +36,7 @@
 
 class TitleXII {
 
- public:
-
+public:
   static int MinSubArrayLen(int s, std::vector<int> &nums) {
     int size = nums.size();
     int min = size, sum = 0, left = 0;
@@ -82,22 +80,21 @@ class TitleXII {
 
 TEST(AlgArrayTitleXII, test1) {
 
-  struct timeval start{}, end{};
   std::vector<int> ret = {2, 3, 1, 2, 4, 3};
-
-  gettimeofday(&start, nullptr);
-  int ret_value = TitleXII::MinSubArrayLen(7, ret);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  int ret_value{0};
+  {
+    ScopedTimer timer("TitleXII::MinSubArrayLen");
+    ret_value = TitleXII::MinSubArrayLen(7, ret);
+  }
 
   EXPECT_EQ(ret_value, 2);
 
   std::vector<int> ret2 = {2, 3, 1, 2, 4, 3};
-
-  gettimeofday(&start, nullptr);
-  int ret_value2 = TitleXII::MinSubArrayLen2(7, ret);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  int ret_value2{0};
+  {
+    ScopedTimer timer("TitleXII::MinSubArrayLen2");
+    ret_value2 = TitleXII::MinSubArrayLen2(7, ret);
+  }
 
   EXPECT_EQ(ret_value2, 2);
 }

@@ -3,10 +3,8 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // 题号 1 : 无重复字符的最长子串
 //
@@ -35,9 +33,9 @@
 
  * */
 
-class Title3 {
+class Title1 {
 
- public:
+public:
   static int LengthOfLongestSubstring(std::string str) {
     int left{0}, right{0}, ret{0}, length{0};
     int len = str.size();
@@ -61,13 +59,15 @@ class Title3 {
   static int LengthOfLongestSubstring2(std::string str) {
 
     int mp[256];
-    for (int &i : mp) i = -1;
+    for (int &i : mp)
+      i = -1;
     int max = 0, len = 0, j = -2, size = str.size();
     for (int i = 0; i < size; i++) {
       if (mp[str[i] - '0'] == -1 || mp[str[i] - '0'] <= j) {
         mp[str[i] - '0'] = i;
         len++;
-        if (len > max) max = len;
+        if (len > max)
+          max = len;
       } else {
 
         len = i - mp[str[i] - '0'];
@@ -79,32 +79,28 @@ class Title3 {
   }
 };
 
-TEST(Title1, test) {
+TEST(ByteStrTitle1, test) {
 
-  struct timeval start{}, end{};
   std::string str1_1 = "abcabcbb";
   std::string str1_2 = "bbbbb";
   std::string str1_3 = "pwwkew";
   int ret = -1;
 
-  gettimeofday(&start, nullptr);
-  ret = Title3::LengthOfLongestSubstring(str1_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "LengthOfLongestSubstring cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title1::LengthOfLongestSubstring");
+    ret = Title1::LengthOfLongestSubstring(str1_1);
+  }
   EXPECT_EQ(3, ret);
 
-  gettimeofday(&start, nullptr);
-  ret = Title3::LengthOfLongestSubstring2(str1_2);
-  gettimeofday(&end, nullptr);
-  std::cout << "LengthOfLongestSubstring2 cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title1::LengthOfLongestSubstring2");
+    ret = Title1::LengthOfLongestSubstring2(str1_2);
+  }
   EXPECT_EQ(1, ret);
 
-  gettimeofday(&start, nullptr);
-  ret = Title3::LengthOfLongestSubstring(str1_1);
-  gettimeofday(&end, nullptr);
-  std::cout << "LengthOfLongestSubstring cost time : " << diff(start, end) << " us." << std::endl;
-
+  {
+    ScopedTimer timer("Title1::LengthOfLongestSubstring");
+    ret = Title1::LengthOfLongestSubstring(str1_3);
+  }
   EXPECT_EQ(3, ret);
 }

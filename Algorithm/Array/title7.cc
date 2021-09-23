@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -18,7 +16,8 @@
 
 // 题号 7 : 合并两个有序数组
 //
-// 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
+// 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1
+// 成为一个有序数组。
 //
 
 /*
@@ -46,30 +45,31 @@ nums2.length == n
 
 class Title7 {
 
- public:
-
-  static void Merge(std::vector<int> &nums1, int m, std::vector<int> &nums2, int n) {
+public:
+  static void Merge(std::vector<int> &nums1, int m, std::vector<int> &nums2,
+                    int n) {
     int index1 = m - 1, index2 = n - 1;
     int i = m + n - 1;
     while (i != index1) {
-      if (index1 >= 0 && nums1[index1] >= nums2[index2]) nums1[i--] = nums1[index1--];
-      else nums1[i--] = nums2[index2--];
+      if (index1 >= 0 && nums1[index1] >= nums2[index2])
+        nums1[i--] = nums1[index1--];
+      else
+        nums1[i--] = nums2[index2--];
     }
   }
 };
 
 TEST(AlgArrayTitle7, test1) {
 
-  struct timeval start{}, end{};
   std::vector<int> nums1 = {1, 2, 3, 0, 0, 0};
   int m_1 = 3;
   std::vector<int> nums2 = {4, 5, 6};
   int m_2 = 3;
 
-  gettimeofday(&start, nullptr);
-  Title7::Merge(nums1, m_1, nums2, m_2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title7::Merge");
+    Title7::Merge(nums1, m_1, nums2, m_2);
+  }
   int size = nums1.size();
   for (int kI = 0; kI < size; ++kI) {
     std::cout << nums1[kI];

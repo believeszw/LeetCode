@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -18,7 +16,8 @@
 
 // 题号 2 : 移除元素
 //
-// 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+// 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val
+// 的元素，并返回移除后数组的新长度。
 //
 // 不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。
 //
@@ -65,11 +64,11 @@ for (int i = 0; i < len; i++) {
 
 class Title2 {
 
- public:
-
+public:
   static int RemoveElement(std::vector<int> &nums, int val) {
     int size = nums.size();
-    if (size < 1) return 0;
+    if (size < 1)
+      return 0;
     int index = 0, ret = 0;
 
     for (int kI = 0; kI < size; ++kI) {
@@ -84,14 +83,12 @@ class Title2 {
 
 TEST(AlgArrayTitle2, test1) {
 
-  struct timeval start{}, end{};
   std::vector<int> ret = {3, 2, 2, 3};
-
-  gettimeofday(&start, nullptr);
-  int ret_value = Title2::RemoveElement(ret, 3);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
-
+  int ret_value{0};
+  {
+    ScopedTimer timer("Title2::RemoveElement");
+    ret_value = Title2::RemoveElement(ret, 3);
+  }
   EXPECT_EQ(ret_value, 2);
   for (int kI = 0; kI < ret_value; ++kI) {
     std::cout << ret[kI];
@@ -101,11 +98,11 @@ TEST(AlgArrayTitle2, test1) {
   std::cout << std::endl;
 
   std::vector<int> ret2 = {0, 1, 2, 2, 3, 0, 4, 2};
-
-  gettimeofday(&start, nullptr);
-  int ret_value2 = Title2::RemoveElement(ret2, 2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  int ret_value2{0};
+  {
+    ScopedTimer timer("Title2::RemoveElement");
+    ret_value2 = Title2::RemoveElement(ret2, 2);
+  }
 
   EXPECT_EQ(ret_value2, 5);
   for (int kI = 0; kI < ret_value2; ++kI) {
@@ -113,5 +110,5 @@ TEST(AlgArrayTitle2, test1) {
     if (kI != ret_value2 - 1)
       std::cout << ", ";
   }
-
+  std::cout << std::endl;
 }

@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -18,7 +16,8 @@
 
 // 题号 5 : 颜色分类
 //
-// 给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+// 给定一个包含红色、白色和蓝色，一共 n
+// 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
 //
 // 此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
 //
@@ -56,11 +55,11 @@ nums[i] 为 0、1 或 2
 
 class Title5 {
 
- public:
-
+public:
   static void SortColors(std::vector<int> &nums) {
     int size = nums.size();
-    if (size < 2) return;
+    if (size < 2)
+      return;
     int left = 0, right = size - 1;
 
     for (int kI = 0; kI <= right; ++kI) {
@@ -79,7 +78,8 @@ class Title5 {
 
   static void SortColors2(std::vector<int> &nums) {
     int size = nums.size();
-    if (size < 2) return;
+    if (size < 2)
+      return;
     int red = 0, white = 0, cnt = 0;
     for (int kI = 0; kI < size; ++kI) {
       if (nums[kI] == 0) {
@@ -98,19 +98,16 @@ class Title5 {
     for (; cnt < size; ++cnt) {
       nums[cnt] = 2;
     }
-
   }
 };
 
 TEST(AlgArrayTitle5, test1) {
 
-  struct timeval start{}, end{};
   std::vector<int> ret = {2, 0, 2, 1, 1, 0};
-
-  gettimeofday(&start, nullptr);
-  Title5::SortColors2(ret);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title5::SortColors2");
+    Title5::SortColors2(ret);
+  }
 
   for (int kI = 0; kI < 6; ++kI) {
     std::cout << ret[kI];
@@ -120,16 +117,14 @@ TEST(AlgArrayTitle5, test1) {
   std::cout << std::endl;
 
   std::vector<int> ret2 = {2, 0, 1};
-
-  gettimeofday(&start, nullptr);
-  Title5::SortColors(ret2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title5::SortColors");
+    Title5::SortColors(ret2);
+  }
 
   for (int kI = 0; kI < 3; ++kI) {
     std::cout << ret2[kI];
     if (kI != 2)
       std::cout << ", ";
   }
-
 }

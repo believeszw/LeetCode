@@ -3,13 +3,13 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
+#include <iostream>
 
 // 题号 8 : Move Zeroes
 //
-// Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+// Given an array nums, write a function to move all 0's to the end of it while
+// maintaining the relative order of the non-zero elements.
 //
 
 /*
@@ -27,8 +27,7 @@ Minimize the total number of operations.
 
 class Title8 {
 
- public:
-
+public:
   static void MoveZeroesBetter(std::vector<int> &nums) { // NOLINT
 
     int size = static_cast<int>(nums.size());
@@ -68,28 +67,27 @@ class Title8 {
   }
 };
 
-TEST(Title8, test8) {
+TEST(TopArrTitle8, test8) {
 
   std::vector<int> vector8 = {9, 0, 11, 9, 0, 2, 0};
-  struct timeval start{}, end{};
 
-  gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 1000; ++kI) {
-    Title8::MoveZeroesBetter(vector8);
+  {
+    ScopedTimer timer("Title8::MoveZeroesBetter");
+    for (int kI = 0; kI < 1000; ++kI) {
+      Title8::MoveZeroesBetter(vector8);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "MoveZeroesBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(0, vector8[4]);
   EXPECT_EQ(0, vector8[5]);
   EXPECT_EQ(0, vector8[6]);
 
   vector8 = {9, 1, 0, 9, 0, 2, 0};
-  gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 1000; ++kJ) {
-    Title8::MoveZeroes(vector8);
+  {
+    ScopedTimer timer("Title8::MoveZeroes");
+    for (int kJ = 0; kJ < 1000; ++kJ) {
+      Title8::MoveZeroes(vector8);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "MoveZeroes       cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(0, vector8[4]);
   EXPECT_EQ(0, vector8[5]);
   EXPECT_EQ(0, vector8[6]);

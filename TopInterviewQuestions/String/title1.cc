@@ -3,16 +3,16 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // 题号 1 : Reverse String
 //
-// Write a function that reverses a string. The input string is given as an array of characters char[].
+// Write a function that reverses a string. The input string is given as an
+// array of characters char[].
 //
-// Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+// Do not allocate extra space for another array, you must do this by modifying
+// the input array in-place with O(1) extra memory.
 //
 // You may assume all the characters consist of printable ascii characters.
 
@@ -29,9 +29,9 @@ Output: ["h","a","n","n","a","H"]
 
  * */
 
-class Title3 {
+class Title1 {
 
- public:
+public:
   static void ReverseString(std::vector<char> &s) { // NOLINT
     int length = s.size();
     for (int kI = 0; kI < length / 2; ++kI) {
@@ -57,19 +57,18 @@ class Title3 {
   }
 };
 
-TEST(Title3, test) {
+TEST(TopStrTitle3, test) {
 
-  struct timeval start{}, end{};
   std::vector<char> char_vector = {'h', 'e', 'l', 'l', 'o'};
   std::vector<char> char_vector2 = {'o', 'l', 'l', 'e', 'h'};
   std::vector<char> char_vector3 = {'a', 'b', 'c', 'd', 'e'};
 
-  gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 101; ++kI) {
-    Title3::ReverseString(char_vector);
+  {
+    ScopedTimer timer("Title1::ReverseString");
+    for (int kI = 0; kI < 101; ++kI) {
+      Title1::ReverseString(char_vector);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseString cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ('o', char_vector[0]);
   EXPECT_EQ('l', char_vector[1]);
@@ -77,12 +76,12 @@ TEST(Title3, test) {
   EXPECT_EQ('e', char_vector[3]);
   EXPECT_EQ('h', char_vector[4]);
 
-  gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 101; ++kI) {
-    Title3::ReverseString2(char_vector2);
+  {
+    ScopedTimer timer("Title1::ReverseString2");
+    for (int kI = 0; kI < 101; ++kI) {
+      Title1::ReverseString2(char_vector2);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseString2 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ('h', char_vector2[0]);
   EXPECT_EQ('e', char_vector2[1]);
@@ -90,12 +89,12 @@ TEST(Title3, test) {
   EXPECT_EQ('l', char_vector2[3]);
   EXPECT_EQ('o', char_vector2[4]);
 
-  gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 101; ++kI) {
-    Title3::ReverseString3(char_vector3);
+  {
+    ScopedTimer timer("Title1::ReverseString3");
+    for (int kI = 0; kI < 101; ++kI) {
+      Title1::ReverseString3(char_vector3);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "ReverseString3 cost time : " << diff(start, end) << " us." << std::endl;
 
   EXPECT_EQ('e', char_vector3[0]);
   EXPECT_EQ('d', char_vector3[1]);

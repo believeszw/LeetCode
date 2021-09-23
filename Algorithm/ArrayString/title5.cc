@@ -3,8 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-#include <iostream>
 #include "util.h" // NOLINT
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -51,8 +51,9 @@
  * */
 
 class Title5 {
- public:
-  static void SetColRowZeros(std::vector<std::vector<int>> &matrix, int row, int col) {
+public:
+  static void SetColRowZeros(std::vector<std::vector<int>> &matrix, int row,
+                             int col) {
     int row_size = matrix[col].size();
     int col_size = matrix.size();
     for (int kI = 0; kI < row_size; ++kI) { // row
@@ -82,36 +83,21 @@ class Title5 {
 };
 
 TEST(AlgStrTitle5, test1) {
-  struct timeval start{}, end{};
-  std::vector<std::vector<int>> ret = {
-      {1, 1, 1},
-      {1, 0, 1},
-      {1, 1, 1}
-  };
-  std::vector<std::vector<int>> expect_ret = {
-      {1, 0, 1},
-      {0, 0, 0},
-      {1, 0, 1}
-  };
-  gettimeofday(&start, nullptr);
-  Title5::SetZeroes(ret);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  std::vector<std::vector<int>> ret = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+  std::vector<std::vector<int>> expect_ret = {{1, 0, 1}, {0, 0, 0}, {1, 0, 1}};
+  {
+    ScopedTimer timer("Title5::SetZeroes");
+    Title5::SetZeroes(ret);
+  }
   EXPECT_EQ(ret, expect_ret);
 
   std::vector<std::vector<int>> ret2 = {
-      {0, 1, 2, 0},
-      {3, 4, 5, 2},
-      {1, 3, 1, 5}
-  };
+      {0, 1, 2, 0}, {3, 4, 5, 2}, {1, 3, 1, 5}};
   std::vector<std::vector<int>> expect_ret2 = {
-      {0, 0, 0, 0},
-      {0, 4, 5, 0},
-      {0, 3, 1, 0}
-  };
-  gettimeofday(&start, nullptr);
-  Title5::SetZeroes(ret2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+      {0, 0, 0, 0}, {0, 4, 5, 0}, {0, 3, 1, 0}};
+  {
+    ScopedTimer timer("Title5::SetZeroes");
+    Title5::SetZeroes(ret2);
+  }
   EXPECT_EQ(ret2, expect_ret2);
 }

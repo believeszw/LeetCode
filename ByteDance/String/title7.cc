@@ -3,8 +3,8 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-#include <iostream>
 #include "util.h" // NOLINT
+#include <iostream>
 
 // 题号 7 : 复原IP地址
 //
@@ -22,7 +22,7 @@
 static std::vector<std::string> res;
 
 class Title7 {
- public:
+public:
   static std::vector<std::string> RestoreIpAddresses(std::string str) {
     std::string ip;
     Helper(str, 0, ip);
@@ -31,25 +31,31 @@ class Title7 {
   static void Helper(std::string str, int index, std::string ip) {
     int size = str.size();
     if (index == 4) {
-      if (str.empty()) res.push_back(ip);
+      if (str.empty())
+        res.push_back(ip);
     } else {
       for (int k = 1; k < 4; ++k) {
-        if (size < k) break;
+        if (size < k)
+          break;
         int val = stoi(str.substr(0, k));
         int size_val = std::to_string(val).size();
-        if (val > 255 || k != size_val) continue;  //剪枝
-        Helper(str.substr(k), index + 1, ip + str.substr(0, k) + (index == 3 ? "" : "."));
+        if (val > 255 || k != size_val)
+          continue; //剪枝
+        Helper(str.substr(k), index + 1,
+               ip + str.substr(0, k) + (index == 3 ? "" : "."));
       }
     }
     return;
   }
 };
 
-TEST(Title7, test) {
+TEST(ByteStrTitle7, test) {
   std::string str7_1 = "25525511135";
   std::vector<std::string> ret;
-  ret = Title7::RestoreIpAddresses(str7_1);
-
+  {
+    ScopedTimer timer("Title7::RestoreIpAddresses");
+    ret = Title7::RestoreIpAddresses(str7_1);
+  }
   EXPECT_EQ("255.255.11.135", ret[0]);
   EXPECT_EQ("255.255.111.35", ret[1]);
 }

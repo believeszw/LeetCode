@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -39,8 +37,7 @@
 
 class TitleX {
 
- public:
-
+public:
   static std::string ReverseVowels2(std::string str) {
     std::set<char> vec{'a', 'e', 'i', 'o', 'u'};
     int size = str.size();
@@ -72,33 +69,30 @@ class TitleX {
     return str;
   }
   static bool IsVowel(char c) {
-    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-        c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' ||
+        c == 'E' || c == 'I' || c == 'O' || c == 'U') {
       return true;
     } else
       return false;
   }
-
 };
 
 TEST(AlgArrayTitleX, test1) {
 
-  struct timeval start{}, end{};
   std::string str = "leetcode";
-
-  gettimeofday(&start, nullptr);
-  std::string ret_value = TitleX::ReverseVowels(str);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
-
+  std::string ret_value;
+  {
+    ScopedTimer timer("TitleX::ReverseVowels");
+    ret_value = TitleX::ReverseVowels(str);
+  }
   EXPECT_EQ(ret_value, "leotcede");
 
   std::string str2 = "hello";
-
-  gettimeofday(&start, nullptr);
-  std::string ret_value2 = TitleX::ReverseVowels2(str2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  std::string ret_value2;
+  {
+    ScopedTimer timer("TitleX::ReverseVowels2");
+    ret_value2 = TitleX::ReverseVowels2(str2);
+  }
 
   EXPECT_EQ(ret_value2, "holle");
 }

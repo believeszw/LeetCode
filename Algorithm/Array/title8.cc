@@ -3,11 +3,9 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
+#include "util.h" // NOLINT
 #include <iostream>
 #include <unordered_map>
-#include "util.h" // NOLINT
-
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -40,8 +38,7 @@
 
 class Title8 {
 
- public:
-
+public:
   static std::vector<int> TwoSum(std::vector<int> &numbers, int target) {
     int size = numbers.size();
     std::vector<int> tmp_vec{0, 0};
@@ -63,35 +60,35 @@ class Title8 {
     int l = 0, r = numbers.size() - 1, sum = 0;
     while (l < r) {
       sum = numbers[l] + numbers[r];
-      if (sum == target) break;
-      if (sum < target) ++l;
-      else --r;
+      if (sum == target)
+        break;
+      if (sum < target)
+        ++l;
+      else
+        --r;
     }
-    return std::vector < int > {l + 1, r + 1};
+    return std::vector<int>{l + 1, r + 1};
   }
 };
 
 TEST(AlgArrayTitle8, test1) {
 
-  struct timeval start{}, end{};
   std::vector<int> nums = {2, 7, 11, 15};
   std::vector<int> ret{0, 0};
-
-  gettimeofday(&start, nullptr);
-  ret = Title8::TwoSum2(nums, 9);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title8::TwoSum2");
+    ret = Title8::TwoSum2(nums, 9);
+  }
 
   EXPECT_EQ(ret[0], 1);
   EXPECT_EQ(ret[1], 2);
 
   std::vector<int> nums2 = {2, 7, 11, 15};
   std::vector<int> ret2{0, 0};
-
-  gettimeofday(&start, nullptr);
-  ret2 = Title8::TwoSum(nums2, 9);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title8::TwoSum");
+    ret2 = Title8::TwoSum(nums2, 9);
+  }
 
   EXPECT_EQ(ret2[0], 1);
   EXPECT_EQ(ret2[1], 2);

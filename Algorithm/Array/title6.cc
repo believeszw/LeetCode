@@ -3,10 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -18,7 +16,8 @@
 
 // 题号 6 : 数组中的第K个最大元素
 //
-// 在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+// 在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k
+// 个最大的元素，而不是第 k 个不同的元素。
 //
 
 /*
@@ -39,7 +38,7 @@
 
 class Title6 {
 
- public:
+public:
   static void AdjustHeap(std::vector<int> &nums, int index, int len) {
 
     //先取出当前元素i
@@ -65,7 +64,8 @@ class Title6 {
 
   static int FindKthLargest(std::vector<int> &nums, int k) {
     int size = nums.size();
-    if (size < 1) return 0;
+    if (size < 1)
+      return 0;
     for (int kI = size / 2 - 1; kI >= 0; --kI) {
       AdjustHeap(nums, kI, size);
     }
@@ -76,18 +76,17 @@ class Title6 {
 
     return nums[size - k];
   }
-
 };
 
 TEST(AlgArrayTitle6, test1) {
 
-  struct timeval start{}, end{};
   std::vector<int> ret = {3, 2, 1, 5, 6, 4};
+  int ret_value{0};
 
-  gettimeofday(&start, nullptr);
-  int ret_value = Title6::FindKthLargest(ret, 2);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title6::FindKthLargest");
+    ret_value = Title6::FindKthLargest(ret, 2);
+  }
   EXPECT_EQ(5, ret_value);
   for (int kI = 0; kI < 6; ++kI) {
     std::cout << ret[kI];
@@ -98,10 +97,10 @@ TEST(AlgArrayTitle6, test1) {
 
   std::vector<int> ret2 = {3, 2, 3, 1, 2, 4, 5, 5, 6};
 
-  gettimeofday(&start, nullptr);
-  ret_value = Title6::FindKthLargest(ret2, 4);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title6::FindKthLargest");
+    ret_value = Title6::FindKthLargest(ret2, 4);
+  }
   EXPECT_EQ(4, ret_value);
   for (int kI = 0; kI < 9; ++kI) {
     std::cout << ret2[kI];

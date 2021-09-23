@@ -3,8 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-#include <iostream>
 #include "util.h" // NOLINT
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -16,7 +16,8 @@
 
 // 题号 6 : 对角线遍历
 //
-// 给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。
+// 给定一个含有 M x N 个元素的矩阵（M 行，N
+// 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。
 //
 
 /*
@@ -41,16 +42,17 @@
  * */
 
 class Title6 {
- public:
-  static std::vector<int> FindDiagonalOrder(std::vector<std::vector<int>> &matrix) {
+public:
+  static std::vector<int>
+  FindDiagonalOrder(std::vector<std::vector<int>> &matrix) {
     std::vector<int> nums;
     int m = matrix.size();
     int n = matrix[0].size();
 
-    int i = 0;    // i 是 x + y 的和
+    int i = 0; // i 是 x + y 的和
     while (i < m + n) {
       // 第 1 3 5 ... 趟
-      int x1 = (i < m) ? i : m - 1;    // 确定 x y 的初始值
+      int x1 = (i < m) ? i : m - 1; // 确定 x y 的初始值
       int y1 = i - x1;
       while (x1 >= 0 && y1 < n) {
         nums.push_back(matrix[x1][y1]);
@@ -59,9 +61,10 @@ class Title6 {
       }
       i++;
 
-      if (i >= m + n) break;
+      if (i >= m + n)
+        break;
       // 第 2 4 6 ... 趟
-      int y2 = (i < n) ? i : n - 1;    // 确定 x y 的初始值
+      int y2 = (i < n) ? i : n - 1; // 确定 x y 的初始值
       int x2 = i - y2;
       while (y2 >= 0 && x2 < m) {
         nums.push_back(matrix[x2][y2]);
@@ -72,12 +75,15 @@ class Title6 {
     }
     return nums;
   }
-  static std::vector<int> FindDiagonalOrder2(std::vector<std::vector<int>> &matrix) {
+  static std::vector<int>
+  FindDiagonalOrder2(std::vector<std::vector<int>> &matrix) {
     std::vector<int> nums;
     int m = matrix.size();
-    if (m == 0) return nums;
+    if (m == 0)
+      return nums;
     int n = matrix[0].size();
-    if (n == 0) return nums;
+    if (n == 0)
+      return nums;
 
     bool bXFlag = true;
     for (int i = 0; i < m + n; i++) {
@@ -100,17 +106,12 @@ class Title6 {
 };
 
 TEST(AlgStrTitle6, test1) {
-  struct timeval start{}, end{};
-  std::vector<std::vector<int>> matrix = {
-      {1, 2, 3},
-      {4, 5, 6},
-      {7, 8, 9}
-  };
+  std::vector<std::vector<int>> matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  std::vector<int> ret;
   std::vector<int> expect_ret = {1, 2, 4, 7, 5, 3, 6, 8, 9};
-  gettimeofday(&start, nullptr);
-  std::vector<int> ret = Title6::FindDiagonalOrder2(matrix);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("Title6::FindDiagonalOrder2");
+    ret = Title6::FindDiagonalOrder2(matrix);
+  }
   EXPECT_EQ(ret, expect_ret);
-
 }

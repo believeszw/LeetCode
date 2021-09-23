@@ -3,17 +3,19 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
+#include <iostream>
 
 // 题号 7 : Plus One
 //
-// Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+// Given a non-empty array of digits representing a non-negative integer, plus
+// one to the integer.
 //
-// The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+// The digits are stored such that the most significant digit is at the head of
+// the list, and each element in the array contain a single digit.
 //
-// You may assume the integer does not contain any leading zero, except the number 0 itself.
+// You may assume the integer does not contain any leading zero, except the
+// number 0 itself.
 //
 
 /*
@@ -33,8 +35,7 @@ Explanation: The array represents the integer 4321.
 
 class Title7 {
 
- public:
-
+public:
   static std::vector<int> PlusOne(std::vector<int> &digits) { // NOLINT
     int carry = 1;
     for (int i = static_cast<int>(digits.size() - 1); i >= 0; i--) {
@@ -56,9 +57,8 @@ class Title7 {
       } else {
         digits[i] = 0;
       }
-
     }
-    digits.insert(digits.end(), digits[size-1]);
+    digits.insert(digits.end(), digits[size - 1]);
     for (int j = size; j > 0; --j) {
       digits[j] = digits[j - 1];
     }
@@ -67,28 +67,27 @@ class Title7 {
   }
 };
 
-TEST(Title7, test7) {
+TEST(TopArrTitle7, test7) {
 
   std::vector<int> vector7_1 = {9, 9, 9, 8};
   std::vector<int> vector7_2 = {9, 9, 9, 8};
   std::vector<int> ret = {0};
-  struct timeval start{}, end{};
 
-  gettimeofday(&start, nullptr);
-  for (int kI = 0; kI < 100; ++kI) {
-    ret = Title7::PlusOne(vector7_1);
+  {
+    ScopedTimer timer("Title7::PlusOne");
+    for (int kI = 0; kI < 100; ++kI) {
+      ret = Title7::PlusOne(vector7_1);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "PlusOne       cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(9, ret[3]);
 
   // SingleNumberBetter
   ret = {0};
-  gettimeofday(&start, nullptr);
-  for (int kJ = 0; kJ < 100; ++kJ) {
-    ret = Title7::PlusOneBetter(vector7_2);
+  {
+    ScopedTimer timer("Title7::PlusOneBetter");
+    for (int kJ = 0; kJ < 100; ++kJ) {
+      ret = Title7::PlusOneBetter(vector7_2);
+    }
   }
-  gettimeofday(&end, nullptr);
-  std::cout << "PlusOneBetter cost time : " << diff(start, end) << " us." << std::endl;
   EXPECT_EQ(9, ret[3]);
 }

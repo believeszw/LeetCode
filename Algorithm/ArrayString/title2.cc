@@ -3,8 +3,8 @@
 // Copyright (c) 2021 believe. All rights reserved.
 //
 
-#include <iostream>
 #include "util.h" // NOLINT
+#include <iostream>
 
 // static const auto io_sync_off = []() {
 //  // turn off sync
@@ -41,7 +41,7 @@
  * */
 
 class Title2 {
- public:
+public:
   static int SearchInsert(std::vector<int> &nums, int target) {
     int size = nums.size();
     if (size <= 0) {
@@ -72,19 +72,19 @@ class Title2 {
 
 TEST(AlgStrTitle2, test1) {
 
-  struct timeval start{}, end{};
   std::vector<int> ret = {1, 3, 5, 6};
-
-  gettimeofday(&start, nullptr);
-  int ret_value = Title2::SearchInsert(ret, 5);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  int ret_value{0};
+  {
+    ScopedTimer timer("Title2::SearchInsert");
+    ret_value = Title2::SearchInsert(ret, 5);
+  }
   EXPECT_EQ(ret_value, 2);
 
   std::vector<int> ret2 = {1, 3, 5, 6};
-  gettimeofday(&start, nullptr);
-  int ret_value2 = Title2::SearchInsert2(ret, 5);
-  gettimeofday(&end, nullptr);
-  std::cout << "function cost time : " << diff(start, end) << " us." << std::endl;
+  int ret_value2{0};
+  {
+    ScopedTimer timer("Title2::SearchInsert2");
+    ret_value2 = Title2::SearchInsert2(ret, 5);
+  }
   EXPECT_EQ(ret_value2, 2);
 }

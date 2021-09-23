@@ -3,10 +3,8 @@
 // Copyright (c) 2020 believe. All rights reserved.
 //
 
-
-#include <iostream>
 #include "util.h" // NOLINT
-
+#include <iostream>
 
 // 题号 XI : Rotate Image
 //
@@ -16,7 +14,9 @@
 //
 // Note:
 //
-// You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+// You have to rotate the image in-place, which means you have to modify the
+// input 2D matrix directly. DO NOT allocate another 2D matrix and do the
+// rotation.
 //
 
 /*
@@ -58,7 +58,7 @@ rotate the input matrix in-place such that it becomes:
 
 class TitleXI {
 
- public:
+public:
   static void Rotate(std::vector<std::vector<int>> &matrix) { // NOLINT
     int size = matrix.size();
 
@@ -72,22 +72,16 @@ class TitleXI {
       }
     }
   }
-
 };
 
-TEST(TitleXI, testXI) {
+TEST(TopArrTitleXI, testXI) {
 
-  struct timeval start{}, end{};
-  std::vector<std::vector<int>> matrix = {
-      {1, 2, 3},
-      {4, 5, 6},
-      {7, 8, 9}
-  };
+  std::vector<std::vector<int>> matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-  gettimeofday(&start, nullptr);
-  TitleXI::Rotate(matrix);
-  gettimeofday(&end, nullptr);
-  std::cout << "3 * 3 Rotate cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("TitleXI::Rotate");
+    TitleXI::Rotate(matrix);
+  }
 
   EXPECT_EQ(7, matrix[0][0]);
   EXPECT_EQ(4, matrix[0][1]);
@@ -100,16 +94,12 @@ TEST(TitleXI, testXI) {
   EXPECT_EQ(3, matrix[2][2]);
 
   std::vector<std::vector<int>> matrix2 = {
-      {5, 1, 9, 11},
-      {2, 4, 8, 10},
-      {13, 3, 6, 7},
-      {15, 14, 12, 16}
-  };
+      {5, 1, 9, 11}, {2, 4, 8, 10}, {13, 3, 6, 7}, {15, 14, 12, 16}};
 
-  gettimeofday(&start, nullptr);
-  TitleXI::Rotate(matrix2);
-  gettimeofday(&end, nullptr);
-  std::cout << "4 * 4 Rotate cost time : " << diff(start, end) << " us." << std::endl;
+  {
+    ScopedTimer timer("TitleXI::Rotate");
+    TitleXI::Rotate(matrix2);
+  }
 
   EXPECT_EQ(15, matrix2[0][0]);
   EXPECT_EQ(13, matrix2[0][1]);
